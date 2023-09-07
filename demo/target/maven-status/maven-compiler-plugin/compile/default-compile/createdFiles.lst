@@ -1,5 +1,6 @@
 Cliente.class
 Main.class
+ProdottoServlet.class
 Prodotto$gioco.class
 Prodotto.class
 ProdottoDAO.class
