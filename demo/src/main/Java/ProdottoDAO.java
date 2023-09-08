@@ -20,7 +20,7 @@ public class ProdottoDAO {
             while (rs.next()) {
                 Prodotto p = new Prodotto();
                 p.setId(rs.getInt("id"));
-                p.setNome_Prodotto(rs.getString("nome"));
+                p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 prodotti.add(p);
             }

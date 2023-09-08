@@ -1,9 +1,9 @@
-import java.sql.*;
+import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.RequestDispatcher;
+import java.sql.DriverManager; // Importa DriverManager da java.sql
 
 public class ProdottoServlet extends HttpServlet {
     private ProdottoDAO prodottoDAO;
@@ -24,7 +24,7 @@ public class ProdottoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
         request.setAttribute("prodotti", prodotti);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);
     }
 }

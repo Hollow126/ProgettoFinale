@@ -1,13 +1,16 @@
 public class Prodotto {
     private int id;
-    private String nome_Prodotto;
+    private String nome;
     private double prezzo;
-    private int quantita;
 
-    private enum gioco {
-        Yugioh,
-        Pokemon,
-        Magic
+    // Costruttore vuoto
+    public Prodotto() {}
+
+    // Costruttore con parametri
+    public Prodotto(int id, String nome, double prezzo) {
+        this.id = id;
+        this.nome = nome;
+        this.prezzo = prezzo;
     }
 
     public int getId() {
@@ -18,12 +21,12 @@ public class Prodotto {
         this.id = id;
     }
 
-    public String getNome_Prodotto() {
-        return nome_Prodotto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNome_Prodotto(String nome_Prodotto) {
-        this.nome_Prodotto = nome_Prodotto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public double getPrezzo() {
@@ -33,13 +36,4 @@ public class Prodotto {
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
-
-    public int getQuantita() {
-        return quantita;
-    }
-
-    public void setQuantita(int quantita) {
-        this.quantita = quantita;
-    };
-
 }

@@ -30,7 +30,7 @@ public class Main {
             List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
             System.out.println("Prodotti:");
             for (Prodotto p : prodotti) {
-                System.out.println(p.getId() + ": " + p.getNome_Prodotto() + " (" + p.getPrezzo() + ")");
+                System.out.println(p.getId() + ": " + p.getNome() + " (" + p.getPrezzo() + ")");
             }
         } catch (Exception e) {
             System.out.println(e);
