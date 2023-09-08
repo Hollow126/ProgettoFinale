@@ -15,9 +15,9 @@
         <url-pattern>/prodotti</url-pattern>
     </servlet-mapping>
 
-    <!-- <servlet>
+    <servlet>
         <servlet-name>ClienteServlet</servlet-name>
-        <servlet-class>it.mio.package.ClienteServlet</servlet-class>
+        <servlet-class>ClienteServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -27,12 +27,12 @@
 
     <servlet>
         <servlet-name>AcquistoServlet</servlet-name>
-        <servlet-class>it.mio.package.AcquistoServlet</servlet-class>
+        <servlet-class>AcquistoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>AcquistoServlet</servlet-name>
         <url-pattern>/acquisti</url-pattern>
-    </servlet-mapping> -->
+    </servlet-mapping>
 
 </web-app>

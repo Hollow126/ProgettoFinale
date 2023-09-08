@@ -1,15 +1,16 @@
-import javax.servlet.*;
-import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.List;
 import java.sql.DriverManager; // Importa DriverManager da java.sql
+import java.util.List;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 public class ProdottoServlet extends HttpServlet {
     private ProdottoDAO prodottoDAO;
 
     public void init() {
-        String url = "jdbc:sqlite:orders.db";
+        String url = "jdbc:sqlite:database.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -21,7 +22,8 @@ public class ProdottoServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
         request.setAttribute("prodotti", prodotti);
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");

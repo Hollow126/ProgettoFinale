@@ -4,7 +4,8 @@ public class Prodotto {
     private double prezzo;
 
     // Costruttore vuoto
-    public Prodotto() {}
+    public Prodotto() {
+    }
 
     // Costruttore con parametri
     public Prodotto(int id, String nome, double prezzo) {
@@ -12,6 +13,8 @@ public class Prodotto {
         this.nome = nome;
         this.prezzo = prezzo;
     }
+
+    // Getter e Setter
 
     public int getId() {
         return id;
