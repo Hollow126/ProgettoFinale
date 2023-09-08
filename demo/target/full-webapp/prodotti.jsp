@@ -1,5 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 
@@ -15,6 +16,7 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Prezzo</th>
+            <th>Prova</th>
         </tr>
         <c:forEach var="prodotto" items="${prodotti}">
             <tr>
