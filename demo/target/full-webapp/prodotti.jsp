@@ -19,11 +19,18 @@
                         <th>Prezzo</th>
                     </tr>
                     <c:forEach var="prodotto" items="${prodotti}">
-                        <tr>
+                        <div class="card text-start">
+                          <img class="card-img-top" src="holder.js/100px180/" alt="Title">
+                          <div class="card-body">
+                            <h4 class="card-title">${prodotto.nome}</h4>
+                            <p class="card-text">${prodotto.prezzo}</p>
+                          </div>
+                        </div>
+                        <!-- <tr>
                             <td>${prodotto.id}</td>
                             <td>${prodotto.nome}</td>
                             <td>${prodotto.prezzo}</td>
-                        </tr>
+                        </tr> -->
                     </c:forEach>
                 </table>
             </body>
