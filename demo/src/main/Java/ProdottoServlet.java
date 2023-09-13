@@ -30,12 +30,26 @@ public class ProdottoServlet extends HttpServlet {
         request.setAttribute("prodotti", prodotti);
 
         // Gestisci i filtri se sono stati applicati
-        String prezzoStr = request.getParameter("prezzo");
-        if (prezzoStr != null && !prezzoStr.isEmpty()) {
-            double prezzoDouble = Double.parseDouble(prezzoStr);
-            List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByPrezzo(prezzoDouble);
-            request.setAttribute("prodotti", prodottiFiltrati);
-        }
+
+        // ottiene i dati dei parametri dei filtri
+        List<Prodotto> prodotti2 = prodottoDAO.getAllProdotti();
+        String raritaDaFrontEnd = request.getParameter("Rarita");
+        String prezzoDaFrontEnd = request.getParameter("Prezzo");
+        String condizioneDaFrontEnd = request.getParameter("Condizione");
+        String gradazioneDaFrontEnd = request.getParameter("Gradazione");
+        // double gradazioneDaFrontEndDouble = Double.parseDouble(gradazioneDaFrontEnd);
+        List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2, raritaDaFrontEnd, prezzoDaFrontEnd,
+                condizioneDaFrontEnd, gradazioneDaFrontEnd);
+        request.setAttribute("prodotti", prodottiFiltrati);
+
+        // if (prezzoDaFrontEnd != "noPrezzo" || raritaDaFrontEnd != "noRarita" ||
+        // condizioneDaFrontEnd != "noCondizione" || gradazioneDaFrontEnd !=
+        // "noGradazione") {
+        // double gradazioneDaFrontEndDouble = Double.parseDouble(gradazioneDaFrontEnd);
+        // List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti,
+        // raritaDaFrontEnd,prezzoDaFrontEnd,condizioneDaFrontEnd,gradazioneDaFrontEndDouble);
+        // request.setAttribute("prodotti", prodottiFiltrati);
+        // }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);

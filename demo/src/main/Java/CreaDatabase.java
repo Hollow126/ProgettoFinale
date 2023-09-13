@@ -68,9 +68,9 @@ public class CreaDatabase {
             String[] nomi = { "Prodotto 1", "Prodotto 2", "Prodotto 3", "Prodotto 4" };
             double[] prezzi = { 9.99, 14.99, 19.99, 24.99 };
             String[] immagini = { "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg" };
-            String[] rarita = { "Comune", "Raro", "Comune", "Molto Raro" };
-            String[] condizioni = { "Nuovo", "Usato", "Nuovo", "Usato" };
-            double[] gradazioni = { 5.5, 7.2, 4.8, 9.3 };
+            String[] rarita = { "Comune", "Rara", "Leggendaria", "Rara" };
+            String[] condizioni = { "Played", "Good", "Near Mint", "Mint" };
+            double[] gradazioni = { 8.5, 8.0, 9.5, 9.0 };
             int[] idCategorie2 = { 1, 2, 1, 3 };
 
             try {
@@ -149,28 +149,28 @@ public class CreaDatabase {
                             "Rara"
                     };
                     String[] condizioneProdotti = {
-                            "Nuovo",
-                            "Usato",
-                            "Nuovo",
-                            "Usato",
-                            "Nuovo",
-                            "Nuovo",
-                            "Usato",
-                            "Nuovo",
-                            "Nuovo",
-                            "Usato"
+                            "Played",
+                            "Good",
+                            "Mint",
+                            "Mint",
+                            "Near Mint",
+                            "Mint",
+                            "Played",
+                            "Good",
+                            "Mint",
+                            "Near Mint"
                     };
                     double[] gradazioneProdotti = {
-                            5,
-                            7,
-                            3,
-                            8,
-                            10,
+                            7.5,
+                            9.0,
                             9.5,
-                            6,
-                            2,
-                            9,
-                            1
+                            8.0,
+                            10.0,
+                            9.5,
+                            8.0,
+                            9.5,
+                            9.5,
+                            10.0
                     };
                     int[] idCategorie = {
                             1,

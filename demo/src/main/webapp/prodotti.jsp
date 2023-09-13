@@ -77,68 +77,75 @@
             </head>
 
             <body class="container bg-light">
-               <jsp:include page="Navbar.jsp" />
+                <jsp:include page="Navbar.jsp" />
                 <!-- Form per i filtri -->
-                <form action="/prodotti" method="get">
+                <!-- <form action="/prodotti" method="get">
                     <label for="prezzo">Prezzo massimo:</label>
                     <input type="text" id="prezzo" name="prezzo">
-                    <!-- Altri campi di input per gli altri filtri -->
+                    Altri campi di input per gli altri filtri 
                     <input type="submit" value="Filtra">
-                </form> 
+                </form>  -->
                 <div class="row">
                     <style></style>
                     <div class="col-sm-3">
-                      <form action="/action_page.php">
-                        <label for="Rarità">Rarità:</label>
-                        <select name="Rarità" id="Rarità">
-                          <option value="comune">Comune</option>
-                          <option value="rara">Rara</option>
-                          <option value="Leggendaria">Leggendaria</option>
-                        </select>
-                        <br><br>
-                        <input type="submit" value="Applica">
-                    
+                        <form action="/prodotti" method="get">
+                            <label for="Rarità">Rarità:</label>
+                            <select name="Rarità" id="Rarità">
+                                <option value=""></option>
+                                <option value="Comune">Comune</option>
+                                <option value="Rara">Rara</option>
+                                <option value="Leggendaria">Leggendaria</option>
+                            </select>
+                            <br><br>
+                            <input type="submit" value="Applica">
+
                     </div>
                     <div class="col-sm-3">
-                    
+
                         <label for="Prezzo">Prezzo:</label>
                         <select name="Prezzo" id="Prezzo">
-                          <option value="Più caro">Più caro</option>
-                          <option value="meno caro">meno caro</option>
-                          
+                            <option value=""></option>
+                            <option value="più caro">Più caro</option>
+                            <option value="meno caro">meno caro</option>
+                            <option value="9.99">9.99</option>
+                            <option value="19.99">19.99</option>
+                            <option value="29.99">29.99</option>
+
                         </select>
                         <br><br>
                     </div>
                     <div class="col-sm-3">
-                    
+
                         <label for="Condizione">Condizione:</label>
                         <select name="Condizione" id="Condizione">
-                          <option value="Played">Played</option>
-                          <option value="Good">Good</option>
-                          <option value="Near Mint">Near Mint</option>
-                          <option value="Mint">Mint</option>
+                            <option value=""></option>
+                            <option value="Played">Played</option>
+                            <option value="Good">Good</option>
+                            <option value="Near Mint">Near Mint</option>
+                            <option value="Mint">Mint</option>
                         </select>
                         <br><br>
-                      
+
                     </div>
                     <div class="col-sm-3">
-                    
+
                         <label for="Gradazione">Gradazione:</label>
                         <select name="Gradazione" id="Gradazione">
-                          <option value="7">7</option>
-                          <option value="7.5">7.5</option>
-                          <option value="8">8</option>
-                          <option value="8.5">8.5</option>
-                          <option value="9">9</option>
-                          <option value="9.5">9.5</option>
-                          <option value="10">10</option>
-                        
+                            <option value=""></option>
+                            <option value="7.0">7</option>
+                            <option value="7.5">7.5</option>
+                            <option value="8.0">8</option>
+                            <option value="8.5">8.5</option>
+                            <option value="9.0">9</option>
+                            <option value="9.5">9.5</option>
+                            <option value="10.0">10</option>
+
                         </select>
                         <br><br>
-                        
-                      </form>
+
+                        </form>
                     </div>
-                  </div>
+                </div>
 
                 <h1 class="text-center " style="color: #046db5;">Lista dei prodotti</h1>
                 <div class="row">
@@ -158,6 +165,8 @@
 
                     </c:forEach>
                 </div>
+                <jsp:include page="footer.jsp" />
+
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
                     crossorigin="anonymous"></script>
