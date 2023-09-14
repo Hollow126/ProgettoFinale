@@ -80,59 +80,75 @@ public class ProdottoDAO {
         }
     }
 
-    // public List<Prodotto> getProdottiByFilter(double gradazione) {
-
-    // List<Prodotto> prodottiFiltrati = new ArrayList<>();
-    // String sql = "SELECT * FROM prodotti WHERE gradazione = ?";
-
-    // try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-    // pstmt.setDouble(1, gradazione);
-
-    // try (ResultSet rs = pstmt.executeQuery()) {
-    // while (rs.next()) {
-    // Prodotto p = new Prodotto();
-    // p.setId(rs.getInt("id"));
-    // p.setNome(rs.getString("nome"));
-    // p.setPrezzo(rs.getDouble("prezzo"));
-    // p.setImmagine(rs.getString("immagine"));
-    // p.setRarita(rs.getString("rarita"));
-    // p.setCondizione(rs.getString("condizione"));
-    // p.setGradazione(rs.getDouble("gradazione"));
-    // p.setId_Categoria(rs.getInt("Id_Categoria"));
-
-    // prodottiFiltrati.add(p);
-    // }
-    // }
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // // Gestisci eccezioni
-    // }
-    // return prodottiFiltrati;
-    // }
     public List<Prodotto> getProdottiByFilter(List<Prodotto> allProdotti, String rarita, String prezzo,
             String condizione, String gradazione) {
 
         List<Prodotto> prodottiFiltrati = new ArrayList<>();
-
-        for (Prodotto prodotto : allProdotti) {
-
-            String prezzoString = Double.toString(prodotto.getPrezzo());
-            String gradazioneString = Double.toString(prodotto.getGradazione());
-            System.out.println("id = " + prodotto.getId());
-            System.out.println("valore da front = " + gradazione + " valore db = "
-                    + Double.toString(prodotto.getGradazione()));
-            System.out.println(
-                    "valore da front = " + prezzo + " valore db = " + Double.toString(prodotto.getPrezzo()));
-            System.out.println("valore da front = " + rarita + " valore db = " + prodotto.getRarita());
-            System.out.println("valore da front = " + condizione + " valore db = " + prodotto.getCondizione() + "\n");
-
-            if ((rarita == null || prodotto.getRarita().equals(rarita)) &&
-                    (prezzo == null || prezzoString.equals(prezzo)) &&
-                    (condizione == null || prodotto.getCondizione().equals(condizione)) &&
-                    (gradazione == null || gradazioneString.equals(gradazione))) {
-                        System.out.println("prodotto Aggiunto");
-                prodottiFiltrati.add(prodotto);
+        String sql = "SELECT * FROM prodotti ";
+        System.out.println("il valore della rarita ; " + rarita);
+        int indice = 0;
+        if (rarita != null && !rarita.isEmpty() && indice <= 4) {
+            if (indice >= 1) {
+                sql = sql + " AND rarita = " + "'" + rarita + "'";
+            } else {
+                sql = sql + " WHERE rarita = " + "'" + rarita + "'";
             }
+            indice++;
+        }
+        if (prezzo != null && !prezzo.isEmpty() && indice <= 4) {
+            if (indice >= 1) {
+                sql = sql + " AND prezzo = " + prezzo;
+            } else {
+                sql = sql + " WHERE prezzo = " + prezzo;
+            }
+            indice++;
+
+        }
+        if (condizione != null && !condizione.isEmpty() && indice <= 4) {
+            if (indice >= 1) {
+                sql = sql + " AND condizione = " + "'" + condizione + "'";
+            } else {
+                sql = sql + " WHERE condizione = " + "'" + condizione + "'";
+            }
+            indice++;
+
+        }
+        if (gradazione != null && !gradazione.isEmpty() && indice <= 4) {
+            if (indice >= 1) {
+                sql = sql + " AND gradazione = " + gradazione;
+            } else {
+                sql = sql + " WHERE gradazione = " + gradazione;
+            }
+            indice++;
+
+        }
+        System.out.println(sql);
+        try (Statement stmt = conn.createStatement();) {
+
+            // for (String stringa : arrayDiStringhe) {
+            // sql = sql + stringa;
+            // System.out.println(sql);
+            // }
+            // sql = sql + ";";
+
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+
+                Prodotto p = new Prodotto();
+                p.setId(rs.getInt("id"));
+                p.setNome(rs.getString("nome"));
+                p.setPrezzo(rs.getDouble("prezzo"));
+                p.setImmagine(rs.getString("immagine"));
+                p.setRarita(rs.getString("rarita"));
+                p.setCondizione(rs.getString("condizione"));
+                p.setGradazione(rs.getDouble("gradazione"));
+                p.setId_Categoria(rs.getInt("Id_Categoria"));
+                prodottiFiltrati.add(p);
+            }
+
+        } catch (SQLException e) {
+            // gestisci l'eccezione
+            e.printStackTrace();
         }
         return prodottiFiltrati;
     }

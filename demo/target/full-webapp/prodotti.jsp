@@ -91,7 +91,7 @@
                         <form action="/prodotti" method="get">
                             <label for="Rarità">Rarità:</label>
                             <select name="Rarità" id="Rarità">
-                                <option value=""></option>
+                                <option value="">qualsiasi</option>
                                 <option value="Comune">Comune</option>
                                 <option value="Rara">Rara</option>
                                 <option value="Leggendaria">Leggendaria</option>

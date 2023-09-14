@@ -33,7 +33,7 @@ public class ProdottoServlet extends HttpServlet {
 
         // ottiene i dati dei parametri dei filtri
         List<Prodotto> prodotti2 = prodottoDAO.getAllProdotti();
-        String raritaDaFrontEnd = request.getParameter("Rarita");
+        String raritaDaFrontEnd = request.getParameter("Rarità");
         String prezzoDaFrontEnd = request.getParameter("Prezzo");
         String condizioneDaFrontEnd = request.getParameter("Condizione");
         String gradazioneDaFrontEnd = request.getParameter("Gradazione");
