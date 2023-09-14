@@ -35,19 +35,7 @@
             </div>
           </div>
         </nav>
-        <div>
-          <form class="d-flex flex-shrink-1">
-            
-            <input class="form-control me-2" type="text" placeholder="Search">
-            <button class="btn btn-light" type="button"><img src="img/icons8-pokeball-48.png"
-                class="bg-light;"></button>
-            
-          </form>
-
-
-
         
-        </div>
       </header>
       <main>
         <!-- <img width="48" height="48" src="https://img.icons8.com/color/48/pokeball--v1.png" alt="pokeball--v1"/> -->

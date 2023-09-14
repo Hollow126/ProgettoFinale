@@ -78,10 +78,27 @@
                         max-height:max-content;
                     }
 
+                    
+                    #image {
+            width: 200px; /* Larghezza iniziale dell'immagine */
+            transition: transform 0.3s ease; /* Animazione ingrandimento */
+        }
+
+        /* Stile quando si passa sopra con il mouse */
+        #image:hover {
+            transform: scale(1.13) rotateX(0deg) rotateY(360deg); /* Ingrandimento dell'immagine del 20% */
+            transition: transform 0.8s ease;
+        }
+    
+
                     @media screen and (max-width: 500px) {
   /* Stili da applicare quando la larghezza dello schermo è <= 500px */
   #logo {
     display: none; /* Nasconde l'elemento impostando "display" a "none" */
+
+  }
+  #div-carte {
+
   }
 }
 
@@ -91,6 +108,19 @@
 
             <body class="container bg-light">
                 <jsp:include page="Navbar.jsp" />
+                <div>
+                  <form class="d-flex flex-shrink-1 mt-3">
+                    
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-light" type="button"><img src="img/icons8-pokeball-48.png"
+                        class="bg-light;"></button>
+                    
+                  </form>
+        
+        
+        
+                
+                </div>
                 <div class="row">
                     <style></style>
                     <div class="col-sm-3">
@@ -141,9 +171,22 @@
                         
                         </select>
                         <br><br>
-                        
-                      </form>
+                    
+                     
                     </div>
+                    <div class="col-sm-3">
+                    
+                      <label for="cars">Lingua:</label>
+                      <select name="cars" id="cars">
+                        <option value="volvo">ITA</option>
+                        <option value="volvo">ENG</option>
+                        <option value="saab">JPN</option>
+                        <option value="audi">ESP</option>
+                      </select>
+                      <br><br>
+                    
+                  </div>
+                  </form>
                   </div>
 
                 <h1 class="text-center " style="color: #046db5;">Lista dei prodotti</h1>
@@ -151,9 +194,11 @@
 
 
                     <c:forEach var="prodotto" items="${prodotti}">
-                        <div class=" col-md-3 mb-3">
-                            <div class="card text-center h-100 ">
-                                <img class="card-img-top mh-100" src="${prodotto.immagine}" alt="${prodotto.nome}">
+                        <div class=" col-lg-3 col-md-4 col-sm-6 mb-3" id="div-carte">
+                            <div class="card text-center h-100 bg-light border-0">
+                              <div id="image-container">
+                                <img class="card-img-top mh-100" id="image" src="${prodotto.immagine}" alt="${prodotto.nome}">
+                              </div>
                                 <div class="card-body">
                                     <h4 class="card-title">${prodotto.nome}</h4>
                                     <p class="card-text">
@@ -163,6 +208,7 @@
                                         <div class="col"> ${prodotto.condizione} </div>
                                         <div class="col">  ${prodotto.gradazione} </div>
                                       </div>
+                                      <button type="submit" value="COMPRA" style="background-color: #046db5; color: white;">ACQUISTA</button>
                                     </p>
                                 </div>
                             </div>
@@ -185,6 +231,23 @@
                 crossorigin="anonymous">
                 </script>
             </script>
+
+            
+
+            <!-- <script>
+              const imageContainer = document.getElementById("image-container");
+              const image = document.getElementById("image");
+              let rotation = 0; // Angolo di rotazione iniziale
+      
+              imageContainer.addEventListener("click", () => {
+                  // Aggiungi 360 gradi per compiere una rotazione completa
+                  rotation += 360;
+      
+                  // Applica la rotazione e l'ingrandimento all'immagine
+                  image.style.transform = `rotate(${rotation}deg)`;
+                  imageContainer.style.width = "200px"; // Larghezza ingrandita
+              });
+          </script> -->
 
             <!-- <script>
                 document.addEventListener('DOMContentLoaded', function () {
