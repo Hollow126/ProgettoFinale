@@ -29,7 +29,7 @@
                   </form>
 
                 </li>
-                <i class="fa-regular fa-cart-shopping fa-bounce fa-3x ms-5" style="color: #046db5;"></i>
+                <i class="fa-regular fa-cart-shopping fa-3x ms-5" style="color: #046db5;"></i>
               </ul>
 
             </div>

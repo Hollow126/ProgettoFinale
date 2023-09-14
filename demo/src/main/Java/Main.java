@@ -22,10 +22,11 @@ public class Main {
             String prezzo = "29.99";
             String condizione = "Good";
             String gradazione = "9.0";
+            String lingua = "ITA";
             System.out.println(prodotti);
 
             List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti, rarita, prezzo, condizione,
-                    gradazione);
+                    gradazione, lingua);
                     System.out.println("i prodotti filtrati sono " + prodottiFiltrati);
             // Stampa tutti i clienti
             // List<Cliente> clienti = clienteDAO.getAllClienti();

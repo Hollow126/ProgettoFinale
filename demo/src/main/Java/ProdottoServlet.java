@@ -37,9 +37,11 @@ public class ProdottoServlet extends HttpServlet {
         String prezzoDaFrontEnd = request.getParameter("Prezzo");
         String condizioneDaFrontEnd = request.getParameter("Condizione");
         String gradazioneDaFrontEnd = request.getParameter("Gradazione");
+        String linguaDaFrontEnd = request.getParameter("Lingua");
+
         // double gradazioneDaFrontEndDouble = Double.parseDouble(gradazioneDaFrontEnd);
         List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2, raritaDaFrontEnd, prezzoDaFrontEnd,
-                condizioneDaFrontEnd, gradazioneDaFrontEnd);
+                condizioneDaFrontEnd, gradazioneDaFrontEnd,linguaDaFrontEnd);
         request.setAttribute("prodotti", prodottiFiltrati);
 
         // if (prezzoDaFrontEnd != "noPrezzo" || raritaDaFrontEnd != "noRarita" ||

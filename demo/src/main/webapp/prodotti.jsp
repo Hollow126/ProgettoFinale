@@ -73,21 +73,27 @@
                     br {
                         margin-bottom: 10px;
                     }
+
+                    .card {
+                        max-height: max-content;
+                    }
+
+                    @media screen and (max-width: 500px) {
+
+                        /* Stili da applicare quando la larghezza dello schermo è <= 500px */
+                        #logo {
+                            display: none;
+                            /* Nasconde l'elemento impostando "display" a "none" */
+                        }
+                    }
                 </style>
             </head>
 
             <body class="container bg-light">
                 <jsp:include page="Navbar.jsp" />
-                <!-- Form per i filtri -->
-                <!-- <form action="/prodotti" method="get">
-                    <label for="prezzo">Prezzo massimo:</label>
-                    <input type="text" id="prezzo" name="prezzo">
-                    Altri campi di input per gli altri filtri 
-                    <input type="submit" value="Filtra">
-                </form>  -->
                 <div class="row">
                     <style></style>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <form action="/prodotti" method="get">
                             <label for="Rarità">Rarità:</label>
                             <select name="Rarità" id="Rarità">
@@ -97,16 +103,13 @@
                                 <option value="Leggendaria">Leggendaria</option>
                             </select>
                             <br><br>
-                            <input type="submit" value="Applica">
 
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
 
                         <label for="Prezzo">Prezzo:</label>
                         <select name="Prezzo" id="Prezzo">
                             <option value=""></option>
-                            <option value="più caro">Più caro</option>
-                            <option value="meno caro">meno caro</option>
                             <option value="9.99">9.99</option>
                             <option value="19.99">19.99</option>
                             <option value="29.99">29.99</option>
@@ -114,7 +117,7 @@
                         </select>
                         <br><br>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
 
                         <label for="Condizione">Condizione:</label>
                         <select name="Condizione" id="Condizione">
@@ -127,7 +130,7 @@
                         <br><br>
 
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
 
                         <label for="Gradazione">Gradazione:</label>
                         <select name="Gradazione" id="Gradazione">
@@ -143,33 +146,69 @@
                         </select>
                         <br><br>
 
-                        </form>
                     </div>
-                </div>
+                    <div class="col-sm-2">
 
-                <h1 class="text-center " style="color: #046db5;">Lista dei prodotti</h1>
-                <div class="row">
+                        <label for="Lingua">Lingua:</label>
+                        <select name="Lingua" id="Lingua">
+                            <option value=""></option>
+                            <option value="ITA">ITA</option>
+                            <option value="ENG">ENG</option>
+                            <option value="ESP">ESP</option>
+                            <option value="JPN">JPN</option>
+                            <option value="GER">GER</option>
+                        </select>
+                        <br><br>
 
 
-                    <c:forEach var="prodotto" items="${prodotti}">
-                        <div class="col-4">
-                            <div class="card text-start">
-                                <img class="card-img-top" src="${prodotto.immagine}" alt="${prodotto.nome}">
-                                <div class="card-body">
-                                    <h4 class="card-title">${prodotto.nome}</h4>
-                                    <p class="card-text">${prodotto.prezzo} + ${prodotto.rarita} +
-                                        ${prodotto.condizione} + ${prodotto.gradazione}</p>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <label for="OrdinePrezzo:">Ordina per:</label>
+                        <select name="OrdinePrezzo" id="OrdinePrezzo">
+                            <option value=""></option>
+                            <option value="PiuCaro">Dal più caro al Più Basso</option>
+                            <option value="MenoCaro">dal meno caro al Più caro</option>
+                        </select>
+                        <br><br>
+
+
+
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4 ">
+                        <input type="submit" class="w-100" value="Applica">
+                    </div>
+
+                    <div class="col-sm-4">
+
+                    </div>
+                    </form>
+
+                    <h1 class="text-center " style="color: #046db5;">Lista dei prodotti</h1>
+                    <div class="row">
+                        <c:forEach var="prodotto" items="${prodotti}">
+                            <div class=" col-md-3 mb-3">
+                                <div class="card text-center h-100 ">
+                                    <img class="card-img-top mh-100" src="${prodotto.immagine}" alt="${prodotto.nome}">
+                                    <div class="card-body">
+                                        <h4 class="card-title">${prodotto.nome}</h4>
+                                        <p class="card-text">
+                                        <div class="row">
+                                            <div class="col">${prodotto.prezzo}</div>
+                                            <div class="col">${prodotto.rarita}</div>
+                                            <div class="col"> ${prodotto.condizione} </div>
+                                            <div class="col"> ${prodotto.gradazione} </div>
+                                            <div class="col"> ${prodotto.lingua} </div>
+                                        </div>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </c:forEach>
-                </div>
-                <jsp:include page="footer.jsp" />
-
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-                    crossorigin="anonymous"></script>
+                        </c:forEach>
+                    </div>
+                    <jsp:include page="footer.jsp" />
             </body>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"

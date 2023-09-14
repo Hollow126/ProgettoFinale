@@ -40,6 +40,7 @@ public class CreaDatabase {
                     "rarita STRING NOT NULL," +
                     "condizione String NOT NULL," +
                     "gradazione tinydouble CONSTRAINT gradazione_CheckLimit CHECK (gradazione BETWEEN 1 AND 10)," +
+                    "lingua String NOT NULL," + 
                     "id_categoria INTEGER NOT NULL" +
                     ");";
 
@@ -67,16 +68,19 @@ public class CreaDatabase {
             // Sample data
             String[] nomi = { "Prodotto 1", "Prodotto 2", "Prodotto 3", "Prodotto 4" };
             double[] prezzi = { 9.99, 14.99, 19.99, 24.99 };
-            String[] immagini = { "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg" };
+            String[] immagini = { "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg",
+                    "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg" };
             String[] rarita = { "Comune", "Rara", "Leggendaria", "Rara" };
             String[] condizioni = { "Played", "Good", "Near Mint", "Mint" };
             double[] gradazioni = { 8.5, 8.0, 9.5, 9.0 };
+            String[] lingue = { "ITA","JPN","ENG","GER" };
+
             int[] idCategorie2 = { 1, 2, 1, 3 };
 
             try {
 
                 // SQL INSERT statement
-                String insertSQL = "INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String insertSQL = "INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione, lingua,id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
                 // Create a PreparedStatement
                 PreparedStatement preparedStatement = conn.prepareStatement(insertSQL);
@@ -89,7 +93,8 @@ public class CreaDatabase {
                     preparedStatement.setString(4, rarita[i]);
                     preparedStatement.setString(5, condizioni[i]);
                     preparedStatement.setDouble(6, gradazioni[i]);
-                    preparedStatement.setInt(7, idCategorie2[i]);
+                    preparedStatement.setString(7, lingue[i]);
+                    preparedStatement.setInt(8, idCategorie2[i]);
 
                     // Execute the INSERT statement
                     preparedStatement.executeUpdate();
@@ -97,7 +102,6 @@ public class CreaDatabase {
 
                 // Close the PreparedStatement and the database connection
                 preparedStatement.close();
-
 
                 System.out.println("Sample data inserted successfully!");
 
@@ -184,9 +188,21 @@ public class CreaDatabase {
                             3,
                             1
                     };
+                    String[] lingueProdotti = {
+                            "ITA",
+                            "JPN",
+                            "ENG",
+                            "GER",
+                            "ITA",
+                            "JPN",
+                            "ENG",
+                            "GER",
+                            "JPN",
+                            "JPN"
+                    };
 
                     // Prepara l'istruzione SQL per l'inserimento
-                    String sqlInserimento2 = "INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    String sqlInserimento2 = "INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione,lingua, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement pstmt2 = conn.prepareStatement(sqlInserimento2);
 
                     for (int i = 0; i < nomiProdotti.length; i++) {
@@ -196,12 +212,13 @@ public class CreaDatabase {
                         pstmt2.setString(4, raritaProdotti[i]);
                         pstmt2.setString(5, condizioneProdotti[i]);
                         pstmt2.setDouble(6, gradazioneProdotti[i]);
-                        pstmt2.setInt(7, idCategorie[i]);
+                        pstmt2.setString(7, lingueProdotti[i]);
+                        pstmt2.setInt(8, idCategorie[i]);
                         pstmt2.executeUpdate();
                     }
 
                     System.out.println("Dati di esempio inseriti con successo.");
-                                    conn.close();
+                    conn.close();
                 }
             } catch (SQLException e) {
                 System.err.println("Errore durante l'inserimento dei dati di esempio: " + e.getMessage());
@@ -239,7 +256,8 @@ public class CreaDatabase {
             percorsiDeiFile[i] = elencoFile[i].getPath();
 
             // Sostituisci ogni "\\" con "/"
-            percorsiDeiFile[i] = percorsiDeiFile[i].replace("C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\", "");
+            percorsiDeiFile[i] = percorsiDeiFile[i]
+                    .replace("C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\", "");
         }
 
         return percorsiDeiFile;

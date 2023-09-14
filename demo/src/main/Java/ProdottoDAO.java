@@ -29,6 +29,7 @@ public class ProdottoDAO {
                 p.setRarita(rs.getString("rarita"));
                 p.setCondizione(rs.getString("condizione"));
                 p.setGradazione(rs.getDouble("gradazione"));
+                p.setLingua(rs.getString("lingua"));
                 p.setId_Categoria(rs.getInt("Id_Categoria"));
                 prodotti.add(p);
             }
@@ -81,13 +82,13 @@ public class ProdottoDAO {
     }
 
     public List<Prodotto> getProdottiByFilter(List<Prodotto> allProdotti, String rarita, String prezzo,
-            String condizione, String gradazione) {
+            String condizione, String gradazione, String lingua) {
 
         List<Prodotto> prodottiFiltrati = new ArrayList<>();
         String sql = "SELECT * FROM prodotti ";
         System.out.println("il valore della rarita ; " + rarita);
         int indice = 0;
-        if (rarita != null && !rarita.isEmpty() && indice <= 4) {
+        if (rarita != null && !rarita.isEmpty() && indice <= 5) {
             if (indice >= 1) {
                 sql = sql + " AND rarita = " + "'" + rarita + "'";
             } else {
@@ -95,16 +96,16 @@ public class ProdottoDAO {
             }
             indice++;
         }
-        if (prezzo != null && !prezzo.isEmpty() && indice <= 4) {
+        if (prezzo != null && !prezzo.isEmpty() && indice <= 5) {
             if (indice >= 1) {
-                sql = sql + " AND prezzo = " + prezzo;
+                sql = sql + " AND prezzo =" + prezzo;
             } else {
                 sql = sql + " WHERE prezzo = " + prezzo;
             }
             indice++;
 
         }
-        if (condizione != null && !condizione.isEmpty() && indice <= 4) {
+        if (condizione != null && !condizione.isEmpty() && indice <= 5) {
             if (indice >= 1) {
                 sql = sql + " AND condizione = " + "'" + condizione + "'";
             } else {
@@ -113,7 +114,7 @@ public class ProdottoDAO {
             indice++;
 
         }
-        if (gradazione != null && !gradazione.isEmpty() && indice <= 4) {
+        if (gradazione != null && !gradazione.isEmpty() && indice <= 5) {
             if (indice >= 1) {
                 sql = sql + " AND gradazione = " + gradazione;
             } else {
@@ -122,15 +123,16 @@ public class ProdottoDAO {
             indice++;
 
         }
+        if (lingua != null && !lingua.isEmpty() && indice <= 5) {
+            if (indice >= 1) {
+                sql = sql + " AND lingua = " + "'" + lingua + "'";
+            } else {
+                sql = sql + " WHERE lingua = " + "'" + lingua + "'";
+            }
+            indice++;
+        }
         System.out.println(sql);
         try (Statement stmt = conn.createStatement();) {
-
-            // for (String stringa : arrayDiStringhe) {
-            // sql = sql + stringa;
-            // System.out.println(sql);
-            // }
-            // sql = sql + ";";
-
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
 
@@ -142,6 +144,7 @@ public class ProdottoDAO {
                 p.setRarita(rs.getString("rarita"));
                 p.setCondizione(rs.getString("condizione"));
                 p.setGradazione(rs.getDouble("gradazione"));
+                p.setLingua(rs.getString("lingua"));
                 p.setId_Categoria(rs.getInt("Id_Categoria"));
                 prodottiFiltrati.add(p);
             }
