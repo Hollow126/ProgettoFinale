@@ -5,7 +5,7 @@
 
 
       <header>
-        <!-- place navbar here -->
+        <!-- navbar qua sotto -->
         <nav class="navbar navbar-expand-sm bg-light text-bg-light d-flex flex-sm-column">
           <div class="container-fluid">
             <a class="navbar-brand " href="javascript:void(0)"><img src="img/prova-logo.png" id="logo"></a>
@@ -29,7 +29,7 @@
                   </form>
 
                 </li>
-                <i class="fa-regular fa-cart-shopping fa-3x ms-5" style="color: #046db5;"></i>
+
               </ul>
 
             </div>
@@ -40,17 +40,17 @@
       <main>
         <!-- <img width="48" height="48" src="https://img.icons8.com/color/48/pokeball--v1.png" alt="pokeball--v1"/> -->
         <br>
-        <!-- Carousel -->
+        <!-- Carosello -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-          <!-- Indicators/dots -->
+          <!-- Indicatori del carosello -->
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
           </div>
 
-          <!-- The slideshow/carousel -->
+          <!-- Immagini che scorrono -->
           <div class="carousel-inner" style="height: 50%; width: 100%;">
             <div class="carousel-item active">
               <img src="img/pikachuSlide1.jpg" alt="Los Angeles" class="d-block w-100">
@@ -76,7 +76,7 @@
             </div>
           </div>
 
-          <!-- Left and right controls/icons -->
+          <!-- freccette destra/sinistra -->
           <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>

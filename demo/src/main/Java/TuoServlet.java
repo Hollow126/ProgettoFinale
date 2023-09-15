@@ -1,11 +1,7 @@
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager; // Importa DriverManager da java.sql
-import java.util.List;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
