@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager; // Importa DriverManager da java.sql
 import java.util.List;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -28,7 +27,6 @@ public class ProdottoServlet extends HttpServlet {
             throws ServletException, IOException {
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
         request.setAttribute("prodotti", prodotti);
-
         // Gestisci i filtri se sono stati applicati
 
         // ottiene i dati dei parametri dei filtri

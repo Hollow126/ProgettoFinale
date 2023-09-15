@@ -138,6 +138,7 @@ public class CreaDatabase {
                             15.99,
                             12.99
                     };
+                    // TODO modificare mettendo url relativo e non assoluto, modificare anche nel metodo.
                     String directoryPath = "C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\ImmaginiProdotti";
                     String[] percorsiImmagini = ottieniPercorsiDeiFile(directoryPath);
                     String[] raritaProdotti = {

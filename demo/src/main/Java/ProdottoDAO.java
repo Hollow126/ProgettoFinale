@@ -56,6 +56,12 @@ public class ProdottoDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setPrezzo(rs.getDouble("prezzo"));
+                    p.setImmagine(rs.getString("immagine"));
+                    p.setRarita(rs.getString("rarita"));
+                    p.setCondizione(rs.getString("condizione"));
+                    p.setGradazione(rs.getDouble("gradazione"));
+                    p.setLingua(rs.getString("lingua"));
+                    p.setId_Categoria(rs.getInt("Id_Categoria"));
                 }
 
             }

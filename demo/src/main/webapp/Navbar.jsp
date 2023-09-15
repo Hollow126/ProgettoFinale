@@ -8,7 +8,7 @@
         <!-- place navbar here -->
         <nav class="navbar navbar-expand-sm bg-light text-bg-light d-flex flex-sm-column">
           <div class="container-fluid">
-            <a class="navbar-brand " href="javascript:void(0)"><img src="img/prova-logo.png"></a>
+            <a class="navbar-brand " href="javascript:void(0)"><img src="img/prova-logo.png" id="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,19 +35,7 @@
             </div>
           </div>
         </nav>
-        <div>
-          <form class="d-flex flex-shrink-1">
-            
-            <input class="form-control me-2" type="text" placeholder="Search">
-            <button class="btn btn-light" type="button"><img src="img/icons8-pokeball-48.png"
-                class="bg-light;"></button>
-            
-          </form>
 
-
-
-        
-        </div>
       </header>
       <main>
         <!-- <img width="48" height="48" src="https://img.icons8.com/color/48/pokeball--v1.png" alt="pokeball--v1"/> -->
@@ -66,12 +54,25 @@
           <div class="carousel-inner" style="height: 50%; width: 100%;">
             <div class="carousel-item active">
               <img src="img/pikachuSlide1.jpg" alt="Los Angeles" class="d-block w-100">
+              <div class="carousel-caption text-start h2">
+                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;">trick or trade 2023</h1>
+                <p class="text-white d-none d-lg-block w-100">Nuove Carte Disponibili!</p>
+              </div>
             </div>
             <div class="carousel-item">
               <img src="img/CharizardSlide2.jpg" alt="Chicago" class="d-block w-100">
+              <div class="carousel-caption text-start h2">
+                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;">ossidiana infuocata</h1>
+                <p class="text-white d-none d-lg-block w-100">Infiamma Il Tuo Gioco!</p>
+              </div>
+
             </div>
             <div class="carousel-item">
               <img src="img/MeowSlide3.jpg" alt="New York" class="d-block w-100">
+              <div class="carousel-caption text-start h2">
+                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;">Gotta Catch 'em all</h1>
+                <p class="text-white d-none d-lg-block w-100">Fai Come Mew: Collezionane Di Più!</p>
+              </div>
             </div>
           </div>
 

@@ -78,12 +78,29 @@
                         max-height: max-content;
                     }
 
+
+                    #image {
+                        width: 200px;
+                        /* Larghezza iniziale dell'immagine */
+                        transition: transform 0.3s ease;
+                        /* Animazione ingrandimento */
+                    }
+
+                    /* Stile quando si passa sopra con il mouse */
+                    #image:hover {
+                        transform: scale(1.13) rotateX(0deg) rotateY(360deg);
+                        /* Ingrandimento dell'immagine del 20% */
+                        transition: transform 0.8s ease;
+                    }
+
+
                     @media screen and (max-width: 500px) {
 
                         /* Stili da applicare quando la larghezza dello schermo è <= 500px */
                         #logo {
                             display: none;
                             /* Nasconde l'elemento impostando "display" a "none" */
+
                         }
                     }
                 </style>
@@ -92,7 +109,6 @@
             <body class="container bg-light">
                 <jsp:include page="Navbar.jsp" />
                 <div class="row">
-                    <style></style>
                     <div class="col-sm-2">
                         <form action="/prodotti" method="get">
                             <label for="Rarità">Rarità:</label>
@@ -188,10 +204,15 @@
 
                     <h1 class="text-center " style="color: #046db5;">Lista dei prodotti</h1>
                     <div class="row">
+
+
                         <c:forEach var="prodotto" items="${prodotti}">
-                            <div class=" col-md-3 mb-3">
-                                <div class="card text-center h-100 ">
-                                    <img class="card-img-top mh-100" src="${prodotto.immagine}" alt="${prodotto.nome}">
+                            <div class=" col-lg-3 col-md-4 col-sm-6 mb-3" id="div-carte">
+                                <div class="card text-center h-100 bg-light border-0">
+                                    <div id="image-container">
+                                        <img class="card-img-top mh-100" id="image" src="${prodotto.immagine}"
+                                            alt="${prodotto.nome}">
+                                    </div>
                                     <div class="card-body">
                                         <h4 class="card-title">${prodotto.nome}</h4>
                                         <p class="card-text">
@@ -201,11 +222,15 @@
                                             <div class="col"> ${prodotto.condizione} </div>
                                             <div class="col"> ${prodotto.gradazione} </div>
                                             <div class="col"> ${prodotto.lingua} </div>
+                                            <a href="dettaglioProdotto.jsp?id=${prodotto.id}">Visualizza Dettagli</a><br>
                                         </div>
+                                        <button type="submit" value="COMPRA"
+                                            style="background-color: #046db5; color: white;">ACQUISTA</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
+
                         </c:forEach>
                     </div>
                     <jsp:include page="footer.jsp" />
