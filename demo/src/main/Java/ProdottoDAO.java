@@ -178,4 +178,20 @@ public class ProdottoDAO {
         }
         return prodottiFiltrati;
     }
+
+    public void modificaProdotto(Prodotto prodotto) {
+        String sql = "UPDATE prodotti SET nome = ?,  prezzo = ?, rarita = ?, condizione = ?, gradazione = ?, lingua = ? WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, prodotto.getNome());
+            pstmt.setDouble(2, prodotto.getPrezzo());
+            pstmt.setString(3, prodotto.getRarita());
+            pstmt.setString(4, prodotto.getCondizione());
+            pstmt.setDouble(5, prodotto.getGradazione());
+            pstmt.setString(6, prodotto.getLingua());
+            pstmt.setInt(7, prodotto.getId());
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
