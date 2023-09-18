@@ -5,7 +5,7 @@
 
 
       <header>
-        <!-- navbar qua sotto -->
+        <!-- place navbar here -->
         <nav class="navbar navbar-expand-sm bg-light text-bg-light d-flex flex-sm-column">
           <div class="container-fluid">
             <a class="navbar-brand " href="javascript:void(0)"><img src="img/prova-logo.png" id="logo"></a>
@@ -27,57 +27,56 @@
                     <button class="mx-3" style="background-color: #046db5; color: white;">SIGN IN</button>
                     <button style="background-color: #046db5; color: white;">SIGN UP</button>
                   </form>
+
                 </li>
-                <li>
-                  <button class="ms-3 mt-1 bg-success text-light pulsante">esporta carte in CSV</button>
-                </li>
+                <i class="fa-regular fa-cart-shopping fa-3x ms-5" style="color: #046db5;"></i>
               </ul>
 
             </div>
           </div>
         </nav>
-        
+
       </header>
       <main>
         <!-- <img width="48" height="48" src="https://img.icons8.com/color/48/pokeball--v1.png" alt="pokeball--v1"/> -->
         <br>
-        <!-- Carosello -->
+        <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-          <!-- Indicatori del carosello -->
+          <!-- Indicators/dots -->
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
           </div>
 
-          <!-- Immagini che scorrono -->
+          <!-- The slideshow/carousel -->
           <div class="carousel-inner" style="height: 50%; width: 100%;">
             <div class="carousel-item active">
               <img src="img/pikachuSlide1.jpg" alt="Los Angeles" class="d-block w-100">
               <div class="carousel-caption text-start h2">
-                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;" >trick or trade 2023</h1>
+                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;">trick or trade 2023</h1>
                 <p class="text-white d-none d-lg-block w-100">Nuove Carte Disponibili!</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="img/CharizardSlide2.jpg" alt="Chicago" class="d-block w-100">
               <div class="carousel-caption text-start h2">
-                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;" >ossidiana infuocata</h1>
+                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;">ossidiana infuocata</h1>
                 <p class="text-white d-none d-lg-block w-100">Infiamma Il Tuo Gioco!</p>
               </div>
-              
+
             </div>
             <div class="carousel-item">
               <img src="img/MeowSlide3.jpg" alt="New York" class="d-block w-100">
               <div class="carousel-caption text-start h2">
-                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;" >Gotta Catch 'em all</h1>
+                <h1 class=" text-uppercase w-100 fw-bold " style="color: #046db5;">Gotta Catch 'em all</h1>
                 <p class="text-white d-none d-lg-block w-100">Fai Come Mew: Collezionane Di Più!</p>
               </div>
             </div>
           </div>
 
-          <!-- freccette destra/sinistra -->
+          <!-- Left and right controls/icons -->
           <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>

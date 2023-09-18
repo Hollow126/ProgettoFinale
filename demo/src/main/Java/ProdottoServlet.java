@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager; // Importa DriverManager da java.sql
 import java.util.List;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -26,16 +25,23 @@ public class ProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+                
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
         request.setAttribute("prodotti", prodotti);
-
         // Gestisci i filtri se sono stati applicati
-        String prezzoStr = request.getParameter("prezzo");
-        if (prezzoStr != null && !prezzoStr.isEmpty()) {
-            double prezzoMassimo = Double.parseDouble(prezzoStr);
-            List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByPrezzo(prezzoMassimo);
-            request.setAttribute("prodotti", prodottiFiltrati);
-        }
+
+        // ottiene i dati dei parametri dei filtri
+        List<Prodotto> prodotti2 = prodottoDAO.getAllProdotti();
+        String raritaDaFrontEnd = request.getParameter("Rarità");
+        String prezzoDaFrontEnd = request.getParameter("Prezzo");
+        String condizioneDaFrontEnd = request.getParameter("Condizione");
+        String gradazioneDaFrontEnd = request.getParameter("Gradazione");
+        String linguaDaFrontEnd = request.getParameter("Lingua");
+
+        List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2, raritaDaFrontEnd, prezzoDaFrontEnd,
+                condizioneDaFrontEnd, gradazioneDaFrontEnd,linguaDaFrontEnd);
+        request.setAttribute("prodotti", prodottiFiltrati);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);

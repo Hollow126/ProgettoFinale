@@ -29,6 +29,7 @@ public class ProdottoDAO {
                 p.setRarita(rs.getString("rarita"));
                 p.setCondizione(rs.getString("condizione"));
                 p.setGradazione(rs.getDouble("gradazione"));
+                p.setLingua(rs.getString("lingua"));
                 p.setId_Categoria(rs.getInt("Id_Categoria"));
                 prodotti.add(p);
             }
@@ -55,6 +56,12 @@ public class ProdottoDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setPrezzo(rs.getDouble("prezzo"));
+                    p.setImmagine(rs.getString("immagine"));
+                    p.setRarita(rs.getString("rarita"));
+                    p.setCondizione(rs.getString("condizione"));
+                    p.setGradazione(rs.getDouble("gradazione"));
+                    p.setLingua(rs.getString("lingua"));
+                    p.setId_Categoria(rs.getInt("Id_Categoria"));
                 }
 
             }
@@ -79,13 +86,62 @@ public class ProdottoDAO {
             e.printStackTrace();
         }
     }
-    public List<Prodotto> getProdottiByPrezzo(double d)
-    {
-        List<Prodotto> prodotti = new ArrayList<>();
-        try (Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM prodotti")) {
 
+    public List<Prodotto> getProdottiByFilter(List<Prodotto> allProdotti, String rarita, String prezzo,
+            String condizione, String gradazione, String lingua) {
+
+        List<Prodotto> prodottiFiltrati = new ArrayList<>();
+        String sql = "SELECT * FROM prodotti ";
+        System.out.println("il valore della rarita ; " + rarita);
+        int indice = 0;
+        if (rarita != null && !rarita.isEmpty() && indice <= 5) {
+            if (indice >= 1) {
+                sql = sql + " AND rarita = " + "'" + rarita + "'";
+            } else {
+                sql = sql + " WHERE rarita = " + "'" + rarita + "'";
+            }
+            indice++;
+        }
+        if (prezzo != null && !prezzo.isEmpty() && indice <= 5) {
+            if (indice >= 1) {
+                sql = sql + " AND prezzo =" + prezzo;
+            } else {
+                sql = sql + " WHERE prezzo = " + prezzo;
+            }
+            indice++;
+
+        }
+        if (condizione != null && !condizione.isEmpty() && indice <= 5) {
+            if (indice >= 1) {
+                sql = sql + " AND condizione = " + "'" + condizione + "'";
+            } else {
+                sql = sql + " WHERE condizione = " + "'" + condizione + "'";
+            }
+            indice++;
+
+        }
+        if (gradazione != null && !gradazione.isEmpty() && indice <= 5) {
+            if (indice >= 1) {
+                sql = sql + " AND gradazione = " + gradazione;
+            } else {
+                sql = sql + " WHERE gradazione = " + gradazione;
+            }
+            indice++;
+
+        }
+        if (lingua != null && !lingua.isEmpty() && indice <= 5) {
+            if (indice >= 1) {
+                sql = sql + " AND lingua = " + "'" + lingua + "'";
+            } else {
+                sql = sql + " WHERE lingua = " + "'" + lingua + "'";
+            }
+            indice++;
+        }
+        System.out.println(sql);
+        try (Statement stmt = conn.createStatement();) {
+            ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
+
                 Prodotto p = new Prodotto();
                 p.setId(rs.getInt("id"));
                 p.setNome(rs.getString("nome"));
@@ -94,15 +150,15 @@ public class ProdottoDAO {
                 p.setRarita(rs.getString("rarita"));
                 p.setCondizione(rs.getString("condizione"));
                 p.setGradazione(rs.getDouble("gradazione"));
+                p.setLingua(rs.getString("lingua"));
                 p.setId_Categoria(rs.getInt("Id_Categoria"));
-                prodotti.add(p);
+                prodottiFiltrati.add(p);
             }
 
         } catch (SQLException e) {
             // gestisci l'eccezione
             e.printStackTrace();
         }
-
-        return prodotti;
+        return prodottiFiltrati;
     }
 }

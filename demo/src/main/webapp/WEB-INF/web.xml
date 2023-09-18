@@ -36,12 +36,12 @@
 
 
     <servlet>
-        <servlet-name>TuoServlet</servlet-name>
-        <servlet-class>TuoServlet</servlet-class>
+        <servlet-name>DettaglioProdottoServlet</servlet-name>
+        <servlet-class>DettaglioProdottoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>TuoServlet</servlet-name>
-        <url-pattern>/paginaRisultati</url-pattern>
+        <servlet-name>DettaglioProdottoServlet</servlet-name>
+        <url-pattern>/DettaglioProdotto</url-pattern>
     </servlet-mapping>
 </web-app>

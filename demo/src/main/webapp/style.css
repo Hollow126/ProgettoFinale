@@ -45,29 +45,31 @@ br {
 }
 
 .card {
-    max-height:max-content;
+    max-height: max-content;
 }
 
 
 #image {
-width: 200px; /* Larghezza iniziale dell'immagine */
-transition: transform 0.3s ease; /* Animazione ingrandimento */
+    width: 200px;
+    /* Larghezza iniziale dell'immagine */
+    transition: transform 0.3s ease;
+    /* Animazione ingrandimento */
 }
 
 /* Stile quando si passa sopra con il mouse */
 #image:hover {
-transform: scale(1.13) rotateX(0deg) rotateY(360deg); /* Ingrandimento dell'immagine del 20% */
-transition: transform 0.8s ease;
+    transform: scale(1.13) rotateX(0deg) rotateY(360deg);
+    /* Ingrandimento dell'immagine del 20% */
+    transition: transform 0.8s ease;
 }
 
 
 @media screen and (max-width: 500px) {
-/* Stili da applicare quando la larghezza dello schermo è <= 500px */
-#logo {
-display: none; /* Nasconde l'elemento impostando "display" a "none" */
 
-}
-#div-carte {
+    /* Stili da applicare quando la larghezza dello schermo è <= 500px */
+    #logo {
+        display: none;
+        /* Nasconde l'elemento impostando "display" a "none" */
 
-}
+    }
 }
