@@ -36,12 +36,12 @@
 
 
     <servlet>
-        <servlet-name>DettaglioProdotto</servlet-name>
-        <servlet-class>DettaglioProdotto</servlet-class>
+        <servlet-name>DettaglioProdottoServlet</servlet-name>
+        <servlet-class>DettaglioProdottoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>DettaglioProdotto</servlet-name>
+        <servlet-name>DettaglioProdottoServlet</servlet-name>
         <url-pattern>/DettaglioProdotto</url-pattern>
     </servlet-mapping>
 </web-app>

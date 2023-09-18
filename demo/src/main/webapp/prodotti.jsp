@@ -13,9 +13,8 @@
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-                <!-- Bootstrap CSS v5.2.1 -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-                    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+                    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
                     crossorigin="anonymous">
                 <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css" />
                 <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-solid.css" />
@@ -27,88 +26,20 @@
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Slab&display=swap"
                     rel="stylesheet">
-                <style>
-                    label {
-                        font-weight: bold;
-                    }
+                <link rel="stylesheet" href="style.css">
 
-                    /* Style for select elements */
-                    select {
-                        width: 100%;
-                        padding: 8px;
-                        margin-bottom: 10px;
-                        border: 1px solid #ccc;
-                        border-radius: 4px;
-                    }
-
-                    /* Style for submit button */
-                    input[type="submit"] {
-                        background-color: #007bff;
-                        color: #fff;
-                        padding: 10px 20px;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    }
-
-                    input[type="submit"]:hover {
-                        background-color: #0056b3;
-                    }
-
-                    /* Style for form columns */
-                    .col-sm-3 {
-                        float: left;
-                        width: 25%;
-                        padding: 10px;
-                    }
-
-                    /* Clear floats after columns */
-                    .row::after {
-                        content: "";
-                        clear: both;
-                        display: table;
-                    }
-
-                    /* Optional: Add some spacing between form elements */
-                    br {
-                        margin-bottom: 10px;
-                    }
-
-                    .card {
-                        max-height: max-content;
-                    }
-
-
-                    #image {
-                        width: 200px;
-                        /* Larghezza iniziale dell'immagine */
-                        transition: transform 0.3s ease;
-                        /* Animazione ingrandimento */
-                    }
-
-                    /* Stile quando si passa sopra con il mouse */
-                    #image:hover {
-                        transform: scale(1.13) rotateX(0deg) rotateY(360deg);
-                        /* Ingrandimento dell'immagine del 20% */
-                        transition: transform 0.8s ease;
-                    }
-
-
-                    @media screen and (max-width: 500px) {
-
-                        /* Stili da applicare quando la larghezza dello schermo è <= 500px */
-                        #logo {
-                            display: none;
-                            /* Nasconde l'elemento impostando "display" a "none" */
-
-                        }
-                    }
-                </style>
             </head>
 
             <body class="container bg-light">
                 <jsp:include page="Navbar.jsp" />
                 <div class="row">
+                    <form class="d-flex flex-shrink-1 mt-3">
+                    
+                        <input class="form-control me-2" type="text" placeholder="Search">
+                        <button class="btn btn-light" type="button"><img src="img/icons8-pokeball-48.png"
+                            class="bg-light;"></button>
+                        
+                      </form>
                     <div class="col-sm-2">
                         <form action="/prodotti" method="get">
                             <label for="Rarità">Rarità:</label>
@@ -222,10 +153,21 @@
                                             <div class="col"> ${prodotto.condizione} </div>
                                             <div class="col"> ${prodotto.gradazione} </div>
                                             <div class="col"> ${prodotto.lingua} </div>
-                                            <a href="dettaglioProdotto.jsp?id=${prodotto.id}">Visualizza Dettagli</a><br>
+                                            <!-- <a href="DettaglioProdotto?id=${prodotto.id}" action="/DettaglioProdotto"
+                                                method="get" value="${prodotto.id}">Visualizza
+                                                Dettagli</a><br> -->
+                                            <c:url var="urlGenerato" value="/DettaglioProdotto">
+                                                <c:param name="id" value="${prodotto.id}" />
+                                            </c:url>
+                                            <a href="${urlGenerato}">Vai alla pagina</a>
+                                            <!-- <a href="DettaglioProdotto?id=${prodotto.id}">
+                                                <button type="submit" value="${prodotto.id}" id="DettaglioProdotto"
+                                                    style="background-color: #046db5; color: white;">visualizza
+                                                    dettagli</button>
+                                            </a> -->
                                         </div>
-                                        <button type="submit" value="COMPRA"
-                                            style="background-color: #046db5; color: white;">ACQUISTA</button>
+                                        <!-- <button type="submit" value="COMPRA"
+                                            style="background-color: #046db5; color: white;">ACQUISTA</button> -->
                                         </p>
                                     </div>
                                 </div>
@@ -239,13 +181,8 @@
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
                 crossorigin="anonymous">
                 </script>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-                integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-                crossorigin="anonymous">
-                </script>
-            <script src="script.js">
-
-            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous"></script>
 
             </html>

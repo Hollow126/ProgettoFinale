@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 
 public class DettaglioProdottoServlet extends HttpServlet {
 
-    private ProdottoDAO prodottoDAO;
+    private ProdottoDAO prodottoDAO2;
 
     public void init() {
         // String url = "jdbc:sqlite:database.db";
@@ -20,14 +20,15 @@ public class DettaglioProdottoServlet extends HttpServlet {
             e.printStackTrace();
             throw new RuntimeException("Errore durante la connessione al database.", e);
         }
-        prodottoDAO = new ProdottoDAO(conn);
+        prodottoDAO2 = new ProdottoDAO(conn);
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException{
-
-        Prodotto p = ProdottoDAO.getProdottoById(6);
+        String dettaglioProdotto = request.getParameter("id");
+        System.out.println(dettaglioProdotto);
+        int dettaglioProdottoInt = Integer.parseInt(dettaglioProdotto);
+        Prodotto p = prodottoDAO2.getProdottoById(dettaglioProdottoInt);
         request.setAttribute("prodotto", p);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("DettaglioProdotto.jsp");

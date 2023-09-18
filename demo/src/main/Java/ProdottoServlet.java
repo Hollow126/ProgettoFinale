@@ -25,6 +25,8 @@ public class ProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+                
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
         request.setAttribute("prodotti", prodotti);
         // Gestisci i filtri se sono stati applicati
@@ -37,19 +39,9 @@ public class ProdottoServlet extends HttpServlet {
         String gradazioneDaFrontEnd = request.getParameter("Gradazione");
         String linguaDaFrontEnd = request.getParameter("Lingua");
 
-        // double gradazioneDaFrontEndDouble = Double.parseDouble(gradazioneDaFrontEnd);
         List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2, raritaDaFrontEnd, prezzoDaFrontEnd,
                 condizioneDaFrontEnd, gradazioneDaFrontEnd,linguaDaFrontEnd);
         request.setAttribute("prodotti", prodottiFiltrati);
-
-        // if (prezzoDaFrontEnd != "noPrezzo" || raritaDaFrontEnd != "noRarita" ||
-        // condizioneDaFrontEnd != "noCondizione" || gradazioneDaFrontEnd !=
-        // "noGradazione") {
-        // double gradazioneDaFrontEndDouble = Double.parseDouble(gradazioneDaFrontEnd);
-        // List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti,
-        // raritaDaFrontEnd,prezzoDaFrontEnd,condizioneDaFrontEnd,gradazioneDaFrontEndDouble);
-        // request.setAttribute("prodotti", prodottiFiltrati);
-        // }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);

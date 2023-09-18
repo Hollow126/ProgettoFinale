@@ -1,0 +1,75 @@
+label {
+    font-weight: bold;
+}
+
+/* Style for select elements */
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style for form columns */
+.col-sm-3 {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+/* Clear floats after columns */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Optional: Add some spacing between form elements */
+br {
+    margin-bottom: 10px;
+}
+
+.card {
+    max-height: max-content;
+}
+
+
+#image {
+    width: 200px;
+    /* Larghezza iniziale dell'immagine */
+    transition: transform 0.3s ease;
+    /* Animazione ingrandimento */
+}
+
+/* Stile quando si passa sopra con il mouse */
+#image:hover {
+    transform: scale(1.13) rotateX(0deg) rotateY(360deg);
+    /* Ingrandimento dell'immagine del 20% */
+    transition: transform 0.8s ease;
+}
+
+
+@media screen and (max-width: 500px) {
+
+    /* Stili da applicare quando la larghezza dello schermo è <= 500px */
+    #logo {
+        display: none;
+        /* Nasconde l'elemento impostando "display" a "none" */
+
+    }
+}

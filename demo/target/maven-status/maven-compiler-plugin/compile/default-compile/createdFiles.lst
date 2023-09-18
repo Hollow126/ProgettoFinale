@@ -3,6 +3,7 @@ AcquistoServlet.class
 ClienteDAO.class
 ClienteServlet.class
 CreaDatabase.class
+DettaglioProdottoServlet.class
 ProdottoDAO.class
 Cliente.class
 ProdottoServlet.class
