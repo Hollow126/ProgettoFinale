@@ -1,11 +1,11 @@
-Main.class
 AcquistoServlet.class
 ClienteDAO.class
+ProdottoDAO.class
+Cliente.class
+Main.class
 ClienteServlet.class
 CreaDatabase.class
 DettaglioProdottoServlet.class
-ProdottoDAO.class
-Cliente.class
 ProdottoServlet.class
 Acquisto.class
 AcquistoDAO.class

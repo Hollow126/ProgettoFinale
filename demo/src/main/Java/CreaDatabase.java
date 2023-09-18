@@ -132,7 +132,7 @@ public class CreaDatabase {
                             12.99
                     };
                     // TODO modificare mettendo url relativo e non assoluto, modificare anche nel metodo.
-                    String directoryPath = "C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\ImmaginiProdotti";
+                    String directoryPath = "C:\\Users\\Java\\Documents\\ProgettoFinale\\ProgettoFinale\\demo\\src\\main\\webapp\\ImmaginiProdotti";
                     String[] percorsiImmagini = ottieniPercorsiDeiFile(directoryPath);
                     String[] raritaProdotti = {
                             "Comune",
@@ -251,7 +251,7 @@ public class CreaDatabase {
 
             // Sostituisci ogni "\\" con "/"
             percorsiDeiFile[i] = percorsiDeiFile[i]
-                    .replace("C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\", "");
+                    .replace("C:\\Users\\Java\\Documents\\ProgettoFinale\\ProgettoFinale\\demo\\src\\main\\webapp\\", "");
         }
 
         return percorsiDeiFile;
