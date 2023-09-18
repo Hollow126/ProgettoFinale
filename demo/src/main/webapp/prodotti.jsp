@@ -34,12 +34,12 @@
                 <jsp:include page="Navbar.jsp" />
                 <div class="row">
                     <form class="d-flex flex-shrink-1 mt-3">
-                    
+
                         <input class="form-control me-2" type="text" placeholder="Search">
                         <button class="btn btn-light" type="button"><img src="img/icons8-pokeball-48.png"
-                            class="bg-light;"></button>
-                        
-                      </form>
+                                class="bg-light;"></button>
+
+                    </form>
                     <div class="col-sm-2">
                         <form action="/prodotti" method="get">
                             <label for="Rarità">Rarità:</label>
@@ -56,7 +56,7 @@
 
                         <label for="Prezzo">Prezzo:</label>
                         <select name="Prezzo" id="Prezzo">
-                            <option value=""></option>
+                            <option value="">qualsiasi</option>
                             <option value="9.99">9.99</option>
                             <option value="19.99">19.99</option>
                             <option value="29.99">29.99</option>
@@ -68,7 +68,7 @@
 
                         <label for="Condizione">Condizione:</label>
                         <select name="Condizione" id="Condizione">
-                            <option value=""></option>
+                            <option value="">qualsiasi</option>
                             <option value="Played">Played</option>
                             <option value="Good">Good</option>
                             <option value="Near Mint">Near Mint</option>
@@ -81,7 +81,7 @@
 
                         <label for="Gradazione">Gradazione:</label>
                         <select name="Gradazione" id="Gradazione">
-                            <option value=""></option>
+                            <option value="">qualsiasi</option>
                             <option value="7.0">7</option>
                             <option value="7.5">7.5</option>
                             <option value="8.0">8</option>
@@ -98,7 +98,7 @@
 
                         <label for="Lingua">Lingua:</label>
                         <select name="Lingua" id="Lingua">
-                            <option value=""></option>
+                            <option value="">qualsiasi</option>
                             <option value="ITA">ITA</option>
                             <option value="ENG">ENG</option>
                             <option value="ESP">ESP</option>
@@ -110,12 +110,12 @@
 
                     </div>
                     <div class="col-sm-2">
-
+                        <!-- qui messo i numeri invece delle stringhe per comodità nei dati per Backend -->
                         <label for="OrdinePrezzo:">Ordina per:</label>
                         <select name="OrdinePrezzo" id="OrdinePrezzo">
-                            <option value=""></option>
-                            <option value="PiuCaro">Dal più caro al Più Basso</option>
-                            <option value="MenoCaro">dal meno caro al Più caro</option>
+                            <option value="">qualsiasi</option>
+                            <option value="1">Dal più caro al Più meno Basso</option>
+                            <option value="2">dal meno caro al Più caro</option>
                         </select>
                         <br><br>
 
@@ -140,34 +140,27 @@
                         <c:forEach var="prodotto" items="${prodotti}">
                             <div class=" col-lg-3 col-md-4 col-sm-6 mb-3" id="div-carte">
                                 <div class="card text-center h-100 bg-light border-0">
+                                    <c:url var="urlGenerato" value="/DettaglioProdotto">
+                                        <c:param name="id" value="${prodotto.id}" />
+                                    </c:url>
                                     <div id="image-container">
-                                        <img class="card-img-top mh-100" id="image" src="${prodotto.immagine}"
-                                            alt="${prodotto.nome}">
+                                        <a href="${urlGenerato}">
+                                            <img class="card-img-top mh-100" id="image" src="${prodotto.immagine} "
+                                                alt="${prodotto.nome}">
+                                        </a>
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">${prodotto.nome}</h4>
                                         <p class="card-text">
                                         <div class="row">
+
                                             <div class="col">${prodotto.prezzo}</div>
                                             <div class="col">${prodotto.rarita}</div>
                                             <div class="col"> ${prodotto.condizione} </div>
                                             <div class="col"> ${prodotto.gradazione} </div>
                                             <div class="col"> ${prodotto.lingua} </div>
-                                            <!-- <a href="DettaglioProdotto?id=${prodotto.id}" action="/DettaglioProdotto"
-                                                method="get" value="${prodotto.id}">Visualizza
-                                                Dettagli</a><br> -->
-                                            <c:url var="urlGenerato" value="/DettaglioProdotto">
-                                                <c:param name="id" value="${prodotto.id}" />
-                                            </c:url>
                                             <a href="${urlGenerato}">Vai alla pagina</a>
-                                            <!-- <a href="DettaglioProdotto?id=${prodotto.id}">
-                                                <button type="submit" value="${prodotto.id}" id="DettaglioProdotto"
-                                                    style="background-color: #046db5; color: white;">visualizza
-                                                    dettagli</button>
-                                            </a> -->
                                         </div>
-                                        <!-- <button type="submit" value="COMPRA"
-                                            style="background-color: #046db5; color: white;">ACQUISTA</button> -->
                                         </p>
                                     </div>
                                 </div>

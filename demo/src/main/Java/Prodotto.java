@@ -1,5 +1,5 @@
 
-public class Prodotto {
+public class Prodotto implements Comparable<Prodotto> {
     private int id;
     private String nome;
     private double prezzo;
@@ -97,5 +97,11 @@ public class Prodotto {
 
     public void setLingua(String lingua) {
         this.lingua = lingua;
+    }
+    
+    @Override
+    public int compareTo(Prodotto altroProdotto) {
+        // Ordina in modo decrescente (dal più caro al meno caro)
+        return Double.compare(altroProdotto.prezzo, this.prezzo);
     }
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class ProdottoDAO {
 
@@ -88,13 +89,13 @@ public class ProdottoDAO {
     }
 
     public List<Prodotto> getProdottiByFilter(List<Prodotto> allProdotti, String rarita, String prezzo,
-            String condizione, String gradazione, String lingua) {
+            String condizione, String gradazione, String lingua, String ordinePrezzo) {
 
         List<Prodotto> prodottiFiltrati = new ArrayList<>();
         String sql = "SELECT * FROM prodotti ";
-        System.out.println("il valore della rarita ; " + rarita);
+        System.out.println("L'ORDINE PREZZO e " + ordinePrezzo);
         int indice = 0;
-        if (rarita != null && !rarita.isEmpty() && indice <= 5) {
+        if (rarita != null && !rarita.isEmpty()) {
             if (indice >= 1) {
                 sql = sql + " AND rarita = " + "'" + rarita + "'";
             } else {
@@ -102,7 +103,7 @@ public class ProdottoDAO {
             }
             indice++;
         }
-        if (prezzo != null && !prezzo.isEmpty() && indice <= 5) {
+        if (prezzo != null && !prezzo.isEmpty()) {
             if (indice >= 1) {
                 sql = sql + " AND prezzo =" + prezzo;
             } else {
@@ -111,7 +112,7 @@ public class ProdottoDAO {
             indice++;
 
         }
-        if (condizione != null && !condizione.isEmpty() && indice <= 5) {
+        if (condizione != null && !condizione.isEmpty()) {
             if (indice >= 1) {
                 sql = sql + " AND condizione = " + "'" + condizione + "'";
             } else {
@@ -120,7 +121,7 @@ public class ProdottoDAO {
             indice++;
 
         }
-        if (gradazione != null && !gradazione.isEmpty() && indice <= 5) {
+        if (gradazione != null && !gradazione.isEmpty()) {
             if (indice >= 1) {
                 sql = sql + " AND gradazione = " + gradazione;
             } else {
@@ -129,13 +130,29 @@ public class ProdottoDAO {
             indice++;
 
         }
-        if (lingua != null && !lingua.isEmpty() && indice <= 5) {
+        if (lingua != null && !lingua.isEmpty()) {
             if (indice >= 1) {
                 sql = sql + " AND lingua = " + "'" + lingua + "'";
             } else {
                 sql = sql + " WHERE lingua = " + "'" + lingua + "'";
             }
             indice++;
+        }
+        if (ordinePrezzo != null && !ordinePrezzo.isEmpty()) {
+            // dal più caro al meno caro
+            if (ordinePrezzo.equals("1")) {
+                sql = sql + " ORDER BY prezzo DESC";
+                for (Prodotto prodotto : prodottiFiltrati) {
+                    System.out.println(prodotto);
+                }
+            }
+            // dal meno caro al più caro
+            else if (ordinePrezzo.equals("2")) {
+                sql = sql + " ORDER BY prezzo ASC";
+                for (Prodotto prodotto : prodottiFiltrati) {
+                    System.out.println(prodotto);
+                }
+            }
         }
         System.out.println(sql);
         try (Statement stmt = conn.createStatement();) {

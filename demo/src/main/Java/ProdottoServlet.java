@@ -38,9 +38,10 @@ public class ProdottoServlet extends HttpServlet {
         String condizioneDaFrontEnd = request.getParameter("Condizione");
         String gradazioneDaFrontEnd = request.getParameter("Gradazione");
         String linguaDaFrontEnd = request.getParameter("Lingua");
-
+        String ordineDaFrontEnd = request.getParameter("OrdinePrezzo");
+        
         List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2, raritaDaFrontEnd, prezzoDaFrontEnd,
-                condizioneDaFrontEnd, gradazioneDaFrontEnd,linguaDaFrontEnd);
+                condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd,ordineDaFrontEnd);
         request.setAttribute("prodotti", prodottiFiltrati);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
