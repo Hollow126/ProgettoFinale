@@ -49,19 +49,6 @@ br {
 }
 
 
-#image {
-    width: 200px;
-    /* Larghezza iniziale dell'immagine */
-    transition: transform 0.3s ease;
-    /* Animazione ingrandimento */
-}
-
-/* Stile quando si passa sopra con il mouse */
-#image:hover {
-    transform: scale(1.13) rotateX(0deg) rotateY(360deg);
-    /* Ingrandimento dell'immagine del 20% */
-    transition: transform 0.8s ease;
-}
 
 
 @media screen and (max-width: 500px) {
@@ -73,3 +60,37 @@ br {
 
     }
 }
+
+.category .category_item{
+    position: relative;
+    width:auto;
+    height: 100%;
+    box-shadow: 20px 20px 50px rgba(8, 8, 8, 0.5);
+    border-radius: 15px;
+    margin: 30px;
+    background-size: 100%; 
+    overflow: hidden;
+    display: inline-block;
+    background-position: center;
+
+}
+    
+.category .category_item:first-child{ 
+     
+     background-position: center;
+}  
+
+
+/* Stili predefiniti per le immagini */
+img {
+    max-width: 100%; /* Le immagini non superano la larghezza del loro contenitore */
+    height: auto; /* Altezza automatica per mantenere le proporzioni originali */
+  }
+  
+  /* Media query per schermi small */
+  @media screen and (max-width: 768px) {
+    img {
+      max-width: 75%; /* Le immagini continuano a non superare la larghezza del loro contenitore */
+      height: auto; /* Altezza automatica per mantenere le proporzioni originali */
+    }
+  }
