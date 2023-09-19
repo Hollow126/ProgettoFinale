@@ -51,10 +51,9 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <div class="row">
       <div class="col">
         <section class="category">
-          <a href="#" class="category_item">
-            <img src="${prodotto.immagine}" alt="" class="m-4" />
-          </a>
-        </section>
+
+            <img src="${prodotto.immagine}" class="category_item" alt="" />
+        </section> 
       </div>
       <div class="col mt-4">
         <h1 style="color: #0056b3">
