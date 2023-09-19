@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 
 public class DettaglioProdottoServlet extends HttpServlet {
 
-    private ProdottoDAO prodottoDAO2;
+    private ProdottoDAO prodottoDAO;
 
     public void init() {
         // String url = "jdbc:sqlite:database.db";
@@ -20,7 +20,7 @@ public class DettaglioProdottoServlet extends HttpServlet {
             e.printStackTrace();
             throw new RuntimeException("Errore durante la connessione al database.", e);
         }
-        prodottoDAO2 = new ProdottoDAO(conn);
+        prodottoDAO = new ProdottoDAO(conn);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DettaglioProdottoServlet extends HttpServlet {
         String idDelProdottoDiCuiSiVuoleIlDettaglio = request.getParameter("id");
         System.out.println(idDelProdottoDiCuiSiVuoleIlDettaglio);
         int idDelProdottoDiCuiSiVuoleIlDettaglioInt = Integer.parseInt(idDelProdottoDiCuiSiVuoleIlDettaglio);
-        Prodotto p = prodottoDAO2.getProdottoById(idDelProdottoDiCuiSiVuoleIlDettaglioInt);
+        Prodotto p = prodottoDAO.getProdottoById(idDelProdottoDiCuiSiVuoleIlDettaglioInt);
         request.setAttribute("prodotto", p);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("DettaglioProdotto.jsp");
@@ -59,7 +59,7 @@ public class DettaglioProdottoServlet extends HttpServlet {
         //     System.out.println("inserimento da fare");
         //     //clientiDAO.inserisciCliente(cliente);
         // } else {
-            prodottoDAO2.modificaProdotto(prodottoConNuoviDati);
+            prodottoDAO.modificaProdotto(prodottoConNuoviDati);
        // }
 
         response.sendRedirect("prodotti");

@@ -194,4 +194,14 @@ public class ProdottoDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public void eliminaProdotto(int id) {
+        String sql = "DELETE FROM prodotti WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

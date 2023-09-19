@@ -160,6 +160,7 @@
                                             <div class="col"> ${prodotto.gradazione} </div>
                                             <div class="col"> ${prodotto.lingua} </div>
                                             <a href="${urlGenerato}">Vai alla pagina</a>
+                                            <a href="prodotti?azione=elimina&id=${prodotto.id}">Elimina</a>
                                         </div>
                                         </p>
                                     </div>
