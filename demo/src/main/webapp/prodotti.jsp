@@ -34,12 +34,12 @@
                 <jsp:include page="Navbar.jsp" />
                 <div class="row">
                     <form class="d-flex flex-shrink-1 mt-3">
-                    
+
                         <input class="form-control me-2" type="text" placeholder="Search">
                         <button class="btn btn-light" type="button"><img src="img/icons8-pokeball-48.png"
-                            class="bg-light;"></button>
-                        
-                      </form>
+                                class="bg-light;"></button>
+
+                    </form>
                     <div class="col-sm-2">
                         <form action="/prodotti" method="get">
                             <label for="Rarità">Rarità:</label>
@@ -141,8 +141,8 @@
                             <div class=" col-lg-3 col-md-4 col-sm-6 mb-3" id="div-carte">
                                 <div class="card text-center h-100 bg-light border-0">
                                     <div id="image-container">
-                                        <img class="card-img-top mh-100 category category_item" id="image" src="${prodotto.immagine}"
-                                            alt="${prodotto.nome}">
+                                        <img class="card-img-top mh-100 category category_item" id="image"
+                                            src="${prodotto.immagine}" alt="${prodotto.nome}">
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">${prodotto.nome}</h4>
@@ -176,7 +176,8 @@
                         </c:forEach>
                     </div>
                     <div>
-                      <button class="d-block mx-auto bg-success text-light mb-1 rounded-5 btn btn-lg" id="exportButton">Esporta in CSV</button>
+                        <a href="prodotti?azione=esporta_csv"><button class="d-block mx-auto bg-success text-light mb-1 rounded-5 btn btn-lg"
+                                id="exportButton">Esporta in CSV</button></a>
                     </div>
                     <jsp:include page="footer.jsp" />
             </body>
@@ -188,40 +189,40 @@
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
                 crossorigin="anonymous"></script>
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-                <script src="./script.js"></script>
-            
-                <script>
-                  document.getElementById('exportButton').addEventListener('click', function() {
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+            <script src="./script.js"></script>
+
+            <!-- <script>
+                document.getElementById('exportButton').addEventListener('click', function () {
                     // Raccogli i dati dalle card Bootstrap
                     const cards = document.querySelectorAll('.card');
                     const data = [];
-                    cards.forEach(function(card) {
-                      const title = card.querySelector('.card-title').textContent;
-                      //const description = card.querySelector('.card-text').textContent;
-                      const description = card.querySelector('.card-text').textContent;
+                    cards.forEach(function (card) {
+                        const title = card.querySelector('.card-title').textContent;
+                        //const description = card.querySelector('.card-text').textContent;
+                        const description = card.querySelector('.card-text').textContent;
 
-                      data.push([title, description]);
+                        data.push([title, description]);
                     });
-                
+
                     // Crea il contenuto CSV
                     const csvContent = 'Titolo, Prezzo, Rarità, Condizione, Gradazione, Lingua \n' + data.map(row => row.join(',')).join('\n');
-                
+
                     // Crea un oggetto Blob per il file CSV
                     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-                
+
                     // Crea un link per scaricare il file CSV
                     const link = document.createElement('a');
                     if (link.download !== undefined) {
-                      const url = URL.createObjectURL(blob);
-                      link.setAttribute('href', url);
-                      link.setAttribute('download', 'dati.csv');
-                      link.style.visibility = 'hidden';
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
+                        const url = URL.createObjectURL(blob);
+                        link.setAttribute('href', url);
+                        link.setAttribute('download', 'dati.csv');
+                        link.style.visibility = 'hidden';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
                     }
-                  });
-                </script>
-                
+                });
+            </script> -->
+
             </html>

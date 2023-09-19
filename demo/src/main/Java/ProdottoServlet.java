@@ -4,6 +4,7 @@ import java.sql.DriverManager; // Importa DriverManager da java.sql
 import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.*;
 
 public class ProdottoServlet extends HttpServlet {
     private ProdottoDAO prodottoDAO;
@@ -25,6 +26,13 @@ public class ProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                String azione = request.getParameter("azione");
+
+                if ("esporta_csv".equals(azione)) {
+                    esportaProdottiInCSV(response);
+                    return;
+                }
+            
 
                 
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
@@ -45,5 +53,21 @@ public class ProdottoServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void esportaProdottiInCSV(HttpServletResponse response) {
+        response.setContentType("text/csv");
+        response.setHeader("Content-Disposition", "attachment;filename=prodotti.csv");
+    
+        try (PrintWriter writer = response.getWriter()) {
+            writer.println("Titolo,Prezzo,Rarità,Condizione,Gradazione,Lingua");
+    
+            List<Prodotto> listaProdottig = prodottoDAO.getAllProdotti();
+            for (Prodotto prodotto : listaProdotti) {
+                writer.println(prodotto.getNome() + "," + prodotto.getPrezzo() + "," + prodotto.getRarita() + "," + prodotto.getCondizione() + "," + prodotto.getGradazione() + "," + prodotto.getLingua());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
