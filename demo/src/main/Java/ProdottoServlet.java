@@ -62,7 +62,7 @@ public class ProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-                System.out.println(request.getPart("fileUpload"));
+        System.out.println(request.getPart("fileUpload"));
         System.out.println(request.getParameter("NomeDaInserire"));
         String nomeDaInserireDaFrontEnd = request.getParameter("NomeDaInserire");
         String raritaDaInserireDaFrontEnd = request.getParameter("RaritaDaInserire");
@@ -84,13 +84,14 @@ public class ProdottoServlet extends HttpServlet {
         prodottoDaInserire.setLingua(linguaDaInserireDaFrontEnd);
 
         // Directory in cui salvare le immagini
-        String uploadDirectory = "ImmaginiProdotti";
+        String uploadDirectory = "C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\ImmaginiProdotti";
 
         Part filePart = request.getPart("fileUpload"); // "file" è il nome del campo nel modulo HTML
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
         // Crea un percorso per il file
         String filePath = uploadDirectory + File.separator + fileName;
+        // String filePath = uploadDirectory + "/" + fileName;
 
         // Scrivi il file su disco
         try (InputStream fileContent = filePart.getInputStream();
@@ -106,12 +107,14 @@ public class ProdottoServlet extends HttpServlet {
         // String imagePath = "/uploaded/images/" + fileName; // Ad esempio, salva solo
         // il percorso relativo
 
-        String imagePath = filePath; // Ad esempio, salva solo il percorso relativo
+        // String imagePath = filePath; // Ad esempio, salva solo il percorso relativo
+        String percorsoRelativo = "ImmaginiProdotti" + "/" + fileName;
 
         // prodottoDaInserire.setImmagine("ciaoaoaoao");
         // Salva "imagePath" nel database
-        prodottoDaInserire.setImmagine("ciaoaoaoao");
+        // prodottoDaInserire.setImmagine(imagePath);
 
+        prodottoDaInserire.setImmagine(percorsoRelativo);
         // Puoi anche restituire una conferma all'utente
         response.getWriter().write("Caricamento completato.");
 
