@@ -62,7 +62,7 @@ public class ProdottoServlet extends HttpServlet {
         try (PrintWriter writer = response.getWriter()) {
             writer.println("Titolo,Prezzo,Rarità,Condizione,Gradazione,Lingua");
     
-            List<Prodotto> listaProdottig = prodottoDAO.getAllProdotti();
+            List<Prodotto> listaProdotti = prodottoDAO.getAllProdotti();
             for (Prodotto prodotto : listaProdotti) {
                 writer.println(prodotto.getNome() + "," + prodotto.getPrezzo() + "," + prodotto.getRarita() + "," + prodotto.getCondizione() + "," + prodotto.getGradazione() + "," + prodotto.getLingua());
             }
