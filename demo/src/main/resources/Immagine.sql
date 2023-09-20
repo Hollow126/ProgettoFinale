@@ -1,0 +1,1 @@
+INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione,lingua, id_categoria) VALUES ('provaScript', 2.50, 'ImmaginiProdotti/img.jpg', 'rara', 'good', 9.5, 'ITA', 2)

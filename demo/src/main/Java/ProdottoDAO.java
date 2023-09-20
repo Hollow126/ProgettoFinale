@@ -75,19 +75,6 @@ public class ProdottoDAO {
         return p;
     }
 
-    public void insertProdotto(Prodotto p) {
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO prodotti (nome, prezzo) VALUES (?, ?)")) {
-
-            stmt.setString(1, p.getNome());
-            stmt.setDouble(2, p.getPrezzo());
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            // gestisci l'eccezione
-            e.printStackTrace();
-        }
-    }
-
     public List<Prodotto> getProdottiByFilter(List<Prodotto> allProdotti, String rarita, String prezzo,
             String condizione, String gradazione, String lingua, String ordinePrezzo) {
 
@@ -177,6 +164,26 @@ public class ProdottoDAO {
             e.printStackTrace();
         }
         return prodottiFiltrati;
+    }
+
+    public void inserisciProdotto(Prodotto prodotto) {
+        try (PreparedStatement pstmt = conn.prepareStatement(
+                "INSERT INTO prodotti (nome, rarita, prezzo, immagine, condizione, gradazione, lingua,id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?,?)")) {
+
+            pstmt.setString(1, prodotto.getNome());
+            pstmt.setString(2, prodotto.getRarita());
+            pstmt.setDouble(3, prodotto.getPrezzo());
+            pstmt.setString(4, prodotto.getImmagine());
+            pstmt.setString(5, prodotto.getCondizione());
+            pstmt.setDouble(6, prodotto.getGradazione());
+            pstmt.setString(7, prodotto.getLingua());
+            pstmt.setInt(8, 2);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            // gestisci l'eccezione
+            e.printStackTrace();
+        }
     }
 
     public void modificaProdotto(Prodotto prodotto) {

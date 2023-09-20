@@ -168,7 +168,29 @@
 
                         </c:forEach>
                     </div>
-                    <p>prova Salva</p>
+
+                    <!--  quando metto encytype e carico una immagine da frontEnd, tutti i valori da frontEnd diventano null  -->
+                    <form action="/prodotti" method="post" enctype="multipart/form-data" >
+                        <input type="hidden" name="id" value=""  >>
+                        Nome: <input type="text" name="NomeDaInserire" id="NomeDaInserire" value="Prova"><br>
+                        Rarita: <input type="text" name="RaritaDaInserire" id="RaritaDaInserire" value="rara"><br>
+                        Prezzo: <input type="text" name="PrezzoDaInserire" id="PrezzoDaInserire" value="5"><br>
+                        Condizione: <input type="text" name="CondizioneDaInserire" id="CondizioneDaInserire"
+                            value="good"><br>
+                        Gradazione: <input type="text" name="GradazioneDaInserire" id="GradazioneDaInserire"
+                            value="8"><br>
+                        Lingua:
+                        <select name="LinguaDaInserire" id="LinguaDaInserire">
+                            <option value="ITA">qualsiasi</option>
+                            <option value="ITA">ITA</option>
+                            <option value="ENG">ENG</option>
+                            <option value="ESP">ESP</option>
+                            <option value="JPN">JPN</option>
+                            <option value="GER">GER</option>
+                        </select>
+                        Immagine <input type="file" name="fileUpload" id="fileUpload" >
+                        <input type="submit" value="Salva">
+                    </form>
                     <jsp:include page="footer.jsp" />
             </body>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

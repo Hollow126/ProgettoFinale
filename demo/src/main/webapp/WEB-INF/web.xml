@@ -7,6 +7,14 @@
     <servlet>
         <servlet-name>ProdottoServlet</servlet-name>
         <servlet-class>ProdottoServlet</servlet-class>
+        <multipart-config>
+            <!-- Impostazioni per il caricamento dei file -->
+            <location>/tmp</location> <!-- Directory temporanea per i file -->
+            <max-file-size>20848820</max-file-size> <!-- Dimensione massima dei file -->
+            <max-request-size>418018841</max-request-size> <!-- Dimensione massima della richiesta -->
+            <file-size-threshold>1048576</file-size-threshold> <!-- Dimensione soglia per il
+            salvataggio su disco -->
+        </multipart-config>
     </servlet>
 
     <servlet-mapping>
