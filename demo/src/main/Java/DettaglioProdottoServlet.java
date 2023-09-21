@@ -40,8 +40,9 @@ public class DettaglioProdottoServlet extends HttpServlet {
             throws ServletException, IOException {
         int idDaFrontEnd = Integer.parseInt(request.getParameter("id"));
         String nomeDaFrontEnd = request.getParameter("Nome");
-        String raritaDaFrontEnd = request.getParameter("Rarità");
         double prezzoDaFrontEnd = Double.parseDouble(request.getParameter("Prezzo"));
+        boolean scambiabileDaModificareDaFrontEnd = Boolean.parseBoolean(request.getParameter("ScambiabileDaModificare"));
+        String raritaDaFrontEnd = request.getParameter("Rarità");
         String condizioneDaFrontEnd = request.getParameter("Condizione");
         double gradazioneDaFrontEnd = Double.parseDouble(request.getParameter("Gradazione"));
         String linguaDaFrontEnd = request.getParameter("Lingua");
@@ -49,18 +50,13 @@ public class DettaglioProdottoServlet extends HttpServlet {
         Prodotto prodottoConNuoviDati = new Prodotto();
         prodottoConNuoviDati.setId(idDaFrontEnd);
         prodottoConNuoviDati.setNome(nomeDaFrontEnd);
-        prodottoConNuoviDati.setRarita(raritaDaFrontEnd);
         prodottoConNuoviDati.setPrezzo(prezzoDaFrontEnd);
+        prodottoConNuoviDati.setScambiabile(scambiabileDaModificareDaFrontEnd);
+        prodottoConNuoviDati.setRarita(raritaDaFrontEnd);
         prodottoConNuoviDati.setCondizione(condizioneDaFrontEnd);
         prodottoConNuoviDati.setGradazione(gradazioneDaFrontEnd);
         prodottoConNuoviDati.setLingua(linguaDaFrontEnd);
-
-        // if (idDaFrontEnd == 0 || idDaFrontEnd.isEmpty()) {
-        //     System.out.println("inserimento da fare");
-        //     //clientiDAO.inserisciCliente(cliente);
-        // } else {
-            prodottoDAO.modificaProdotto(prodottoConNuoviDati);
-       // }
+        prodottoDAO.modificaProdotto(prodottoConNuoviDati);
 
         response.sendRedirect("prodotti");
     }

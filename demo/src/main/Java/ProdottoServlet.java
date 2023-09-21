@@ -35,7 +35,7 @@ public class ProdottoServlet extends HttpServlet {
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
         request.setAttribute("prodotti", prodotti);
         // Gestisci i filtri se sono stati applicati
-
+        
         // ottiene i dati dei parametri dei filtri
         List<Prodotto> prodotti2 = prodottoDAO.getAllProdotti();
         String idDaFrontEnd = request.getParameter("id");
@@ -70,15 +70,18 @@ public class ProdottoServlet extends HttpServlet {
         String condizioneDaInserireDaFrontEnd = request.getParameter("CondizioneDaInserire");
         String gradazioneDaInserireDaFrontEnd = request.getParameter("GradazioneDaInserire");
         String linguaDaInserireDaFrontEnd = request.getParameter("LinguaDaInserire");
+        String cartaScambabileDaInserireDaFrontEnd = request.getParameter("scambiabileDaInserire");
 
         Double prezzoDaInserireDaFrontEndDouble = Double.parseDouble(prezzoDaInserireDaFrontEnd);
         Double gradazioneDaInserireDaFrontEndDouble = Double.parseDouble(gradazioneDaInserireDaFrontEnd);
+        Boolean cartaScambabileDaInserireDaFrontEndBoolean = Boolean.parseBoolean(cartaScambabileDaInserireDaFrontEnd);
 
         Prodotto prodottoDaInserire = new Prodotto();
         prodottoDaInserire.setNome(nomeDaInserireDaFrontEnd);
+
         prodottoDaInserire.setRarita(raritaDaInserireDaFrontEnd);
         prodottoDaInserire.setPrezzo(prezzoDaInserireDaFrontEndDouble);
-
+        prodottoDaInserire.setScambiabile(cartaScambabileDaInserireDaFrontEndBoolean);
         prodottoDaInserire.setCondizione(condizioneDaInserireDaFrontEnd);
         prodottoDaInserire.setGradazione(gradazioneDaInserireDaFrontEndDouble);
         prodottoDaInserire.setLingua(linguaDaInserireDaFrontEnd);

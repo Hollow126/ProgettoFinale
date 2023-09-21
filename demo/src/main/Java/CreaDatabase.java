@@ -37,10 +37,11 @@ public class CreaDatabase {
                     "nome TEXT NOT NULL," +
                     "prezzo REAL NOT NULL," +
                     "immagine STRING NOT NULL," +
+                    "scambiabile BOOLEAN NOT NULL," +
                     "rarita STRING NOT NULL," +
                     "condizione String NOT NULL," +
                     "gradazione tinydouble CONSTRAINT gradazione_CheckLimit CHECK (gradazione BETWEEN 1 AND 10)," +
-                    "lingua String NOT NULL," + 
+                    "lingua String NOT NULL," +
                     "id_categoria INTEGER NOT NULL" +
                     ");";
 
@@ -70,17 +71,18 @@ public class CreaDatabase {
             double[] prezzi = { 9.99, 14.99, 19.99, 24.99 };
             String[] immagini = { "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg",
                     "ImmaginiProdotti/images1.jpg", "ImmaginiProdotti/images1.jpg" };
+            boolean[] scambiabili = { true, false, true, false };
             String[] rarita = { "Comune", "Rara", "Leggendaria", "Rara" };
             String[] condizioni = { "Played", "Good", "Near Mint", "Mint" };
             double[] gradazioni = { 8.5, 8.0, 9.5, 9.0 };
-            String[] lingue = { "ITA","JPN","ENG","GER" };
+            String[] lingue = { "ITA", "JPN", "ENG", "GER" };
 
             int[] idCategorie2 = { 1, 2, 1, 3 };
 
             try {
 
                 // SQL INSERT statement
-                String insertSQL = "INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione, lingua,id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String insertSQL = "INSERT INTO prodotti (nome, prezzo, immagine, scambiabile, rarita, condizione, gradazione, lingua,id_categoria) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
 
                 // Create a PreparedStatement
                 PreparedStatement preparedStatement = conn.prepareStatement(insertSQL);
@@ -90,11 +92,12 @@ public class CreaDatabase {
                     preparedStatement.setString(1, nomi[i]);
                     preparedStatement.setDouble(2, prezzi[i]);
                     preparedStatement.setString(3, immagini[i]);
-                    preparedStatement.setString(4, rarita[i]);
-                    preparedStatement.setString(5, condizioni[i]);
-                    preparedStatement.setDouble(6, gradazioni[i]);
-                    preparedStatement.setString(7, lingue[i]);
-                    preparedStatement.setInt(8, idCategorie2[i]);
+                    preparedStatement.setBoolean(4, scambiabili[i]);
+                    preparedStatement.setString(5, rarita[i]);
+                    preparedStatement.setString(6, condizioni[i]);
+                    preparedStatement.setDouble(7, gradazioni[i]);
+                    preparedStatement.setString(8, lingue[i]);
+                    preparedStatement.setInt(9, idCategorie2[i]);
 
                     // Execute the INSERT statement
                     preparedStatement.executeUpdate();
@@ -138,9 +141,22 @@ public class CreaDatabase {
                             15.99,
                             12.99
                     };
-                    // TODO modificare mettendo url relativo e non assoluto, modificare anche nel metodo.
+                    // TODO modificare mettendo url relativo e non assoluto, modificare anche nel
+                    // metodo.
                     String directoryPath = "C:\\Users\\Java\\Documents\\java-Local\\ProgettoFinale\\demo\\src\\main\\webapp\\ImmaginiProdotti";
                     String[] percorsiImmagini = ottieniPercorsiDeiFile(directoryPath);
+                    boolean[] scambiabilitaProdotti = {
+                        true,
+                        false,
+                        true,
+                        false,
+                        true,
+                        true,
+                        false,
+                        true,
+                        false,
+                        true
+                    };
                     String[] raritaProdotti = {
                             "Comune",
                             "Rara",
@@ -203,18 +219,19 @@ public class CreaDatabase {
                     };
 
                     // Prepara l'istruzione SQL per l'inserimento
-                    String sqlInserimento2 = "INSERT INTO prodotti (nome, prezzo, immagine, rarita, condizione, gradazione,lingua, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    String sqlInserimento2 = "INSERT INTO prodotti (nome, prezzo, immagine, scambiabile, rarita, condizione, gradazione,lingua, id_categoria) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement pstmt2 = conn.prepareStatement(sqlInserimento2);
 
                     for (int i = 0; i < nomiProdotti.length; i++) {
                         pstmt2.setString(1, nomiProdotti[i]);
                         pstmt2.setDouble(2, prezziProdotti[i]);
                         pstmt2.setString(3, percorsiImmagini[i]);
-                        pstmt2.setString(4, raritaProdotti[i]);
-                        pstmt2.setString(5, condizioneProdotti[i]);
-                        pstmt2.setDouble(6, gradazioneProdotti[i]);
-                        pstmt2.setString(7, lingueProdotti[i]);
-                        pstmt2.setInt(8, idCategorie[i]);
+                        pstmt2.setBoolean(4, scambiabilitaProdotti[i]);
+                        pstmt2.setString(5, raritaProdotti[i]);
+                        pstmt2.setString(6, condizioneProdotti[i]);
+                        pstmt2.setDouble(7, gradazioneProdotti[i]);
+                        pstmt2.setString(8, lingueProdotti[i]);
+                        pstmt2.setInt(9, idCategorie[i]);
                         pstmt2.executeUpdate();
                     }
 

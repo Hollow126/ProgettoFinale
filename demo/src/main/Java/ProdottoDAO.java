@@ -27,6 +27,7 @@ public class ProdottoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 p.setImmagine(rs.getString("immagine"));
+                p.setScambiabile(rs.getBoolean("scambiabile"));
                 p.setRarita(rs.getString("rarita"));
                 p.setCondizione(rs.getString("condizione"));
                 p.setGradazione(rs.getDouble("gradazione"));
@@ -58,6 +59,7 @@ public class ProdottoDAO {
                     p.setNome(rs.getString("nome"));
                     p.setPrezzo(rs.getDouble("prezzo"));
                     p.setImmagine(rs.getString("immagine"));
+                    p.setScambiabile(rs.getBoolean("scambiabile"));
                     p.setRarita(rs.getString("rarita"));
                     p.setCondizione(rs.getString("condizione"));
                     p.setGradazione(rs.getDouble("gradazione"));
@@ -151,6 +153,7 @@ public class ProdottoDAO {
                 p.setNome(rs.getString("nome"));
                 p.setPrezzo(rs.getDouble("prezzo"));
                 p.setImmagine(rs.getString("immagine"));
+                p.setScambiabile(rs.getBoolean("scambiabile"));
                 p.setRarita(rs.getString("rarita"));
                 p.setCondizione(rs.getString("condizione"));
                 p.setGradazione(rs.getDouble("gradazione"));
@@ -168,16 +171,17 @@ public class ProdottoDAO {
 
     public void inserisciProdotto(Prodotto prodotto) {
         try (PreparedStatement pstmt = conn.prepareStatement(
-                "INSERT INTO prodotti (nome, rarita, prezzo, immagine, condizione, gradazione, lingua,id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?,?)")) {
+                "INSERT INTO prodotti (nome, rarita, prezzo, immagine, scambiabile, condizione, gradazione, lingua,id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)")) {
 
             pstmt.setString(1, prodotto.getNome());
             pstmt.setString(2, prodotto.getRarita());
             pstmt.setDouble(3, prodotto.getPrezzo());
             pstmt.setString(4, prodotto.getImmagine());
-            pstmt.setString(5, prodotto.getCondizione());
-            pstmt.setDouble(6, prodotto.getGradazione());
-            pstmt.setString(7, prodotto.getLingua());
-            pstmt.setInt(8, 2);
+            pstmt.setBoolean(5, prodotto.isScambiabile());
+            pstmt.setString(6, prodotto.getCondizione());
+            pstmt.setDouble(7, prodotto.getGradazione());
+            pstmt.setString(8, prodotto.getLingua());
+            pstmt.setInt(9, 2);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -187,15 +191,16 @@ public class ProdottoDAO {
     }
 
     public void modificaProdotto(Prodotto prodotto) {
-        String sql = "UPDATE prodotti SET nome = ?,  prezzo = ?, rarita = ?, condizione = ?, gradazione = ?, lingua = ? WHERE id = ?";
+        String sql = "UPDATE prodotti SET nome = ?,  prezzo = ?,scambiabile = ?, rarita = ?, condizione = ?, gradazione = ?, lingua = ? WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, prodotto.getNome());
             pstmt.setDouble(2, prodotto.getPrezzo());
-            pstmt.setString(3, prodotto.getRarita());
-            pstmt.setString(4, prodotto.getCondizione());
-            pstmt.setDouble(5, prodotto.getGradazione());
-            pstmt.setString(6, prodotto.getLingua());
-            pstmt.setInt(7, prodotto.getId());
+            pstmt.setBoolean(3, prodotto.isScambiabile());
+            pstmt.setString(4, prodotto.getRarita());
+            pstmt.setString(5, prodotto.getCondizione());
+            pstmt.setDouble(6, prodotto.getGradazione());
+            pstmt.setString(7, prodotto.getLingua());
+            pstmt.setInt(8, prodotto.getId());
             pstmt.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());

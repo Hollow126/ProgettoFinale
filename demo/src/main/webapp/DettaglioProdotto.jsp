@@ -59,23 +59,10 @@
                 </tr>
                 <tr>
                   <td>Scambiabile:</td>
-                  <td>Si</td>
+                  <td>${prodotto.scambiabile ? "si" : "no"}</td>
                 </tr>
               </tbody>
             </table>
-            <!-- <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckCheckedDisabled"
-            checked
-            disabled
-          />
-          <label class="form-check-label" for="flexCheckCheckedDisabled">
-            Scambiabile
-          </label>
-        </div> -->
 
 
             <button data-bs-toggle="collapse" data-bs-target="#demo" class="modifica mb-3 d-block mx-auto text-light"
@@ -135,6 +122,12 @@
                   <option value="ESP">ESP</option>
                   <option value="JPN">JPN</option>
                   <option value="GER">GER</option>
+                </select>
+                <label for="ScambiabileDaModificare">La carta è Scambiabile? :</label>
+                <select name="ScambiabileDaModificare" id="ScambiabileDaModificare">
+                  <option value="${prodotto.scambiabile}">${prodotto.scambiabile ? "si" : "no"} </option>
+                  <option value="true">si</option>
+                  <option value="false">no</option>
                 </select>
                 <br><br>
                 <input type="submit" value="Salva" class="d-block mx-auto mb-5">

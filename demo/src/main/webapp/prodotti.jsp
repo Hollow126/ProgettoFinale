@@ -158,6 +158,7 @@
                                             <div class="col"> ${prodotto.condizione} </div>
                                             <div class="col"> ${prodotto.gradazione} </div>
                                             <div class="col"> ${prodotto.lingua} </div>
+                                            <div class="col">${prodotto.scambiabile ? "Carta scambiabile" : "Carta non scambiabile"}</div>
                                             <a href="${urlGenerato}">Vai alla pagina</a>
                                             <a href="prodotti?azione=elimina&id=${prodotto.id}">Elimina</a>
                                         </div>
@@ -187,6 +188,11 @@
                             <option value="ESP">ESP</option>
                             <option value="JPN">JPN</option>
                             <option value="GER">GER</option>
+                        </select>
+                        La carta è Scambiabile? 
+                        <select name="scambiabileDaInserire" id="scambiabileDaInserire">
+                            <option value="true">si</option>
+                            <option value="false">no</option>
                         </select>
                         Immagine <input type="file" name="fileUpload" id="fileUpload" >
                         <input type="submit" value="Salva">
