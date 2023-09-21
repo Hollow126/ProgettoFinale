@@ -15,16 +15,16 @@
             <div class="collapse navbar-collapse" id="mynavbar">
               <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                  <form class="border ms-5 d-flex">
+                  <form class=" ms-5 d-sm-flex">
                     <div class="row">
-                      <div class="col">
+                      <div class="col-sm-12 col-md-6">
                         <input type="text" class="form-control" placeholder="Enter email" name="email">
                       </div>
-                      <div class="col">
+                      <div class="col-sm-12 col-md-6">
                         <input type="password" class="form-control" placeholder="Enter password" name="pswd">
                       </div>
                     </div>
-                    <button class="mx-3" style="background-color: #046db5; color: white;">SIGN IN</button>
+                    <button class="mx-3" id="zio" style="background-color: #046db5; color: white;">SIGN IN</button>
                     <button style="background-color: #046db5; color: white;">SIGN UP</button>
                   </form>
 
