@@ -93,15 +93,41 @@ public class ProdottoDAO {
             indice++;
         }
         if (prezzo != null && !prezzo.isEmpty()) {
-            if (indice >= 1) {
-                sql = sql + " AND prezzo =" + prezzo;
-            } else {
-                sql = sql + " WHERE prezzo = " + prezzo;
-            }
-            indice++;
+            if (prezzo.equals("1")) {
+                if (indice >= 1) {
+                    sql = sql + " AND prezzo <= 10.00";
+                } else {
+                    sql = sql + " WHERE  prezzo <= 10.00";
+                }
+                indice++;
+            } else if (prezzo.equals("2")) {
 
+                if (indice >= 1) {
+                    sql = sql + " AND prezzo >= 10.00 AND prezzo <= 25.00";
+                } else {
+                    sql = sql + " WHERE prezzo >= 10.00 AND prezzo <= 25.00";
+                }
+                indice++;
+            } else if (prezzo.equals("3")) {
+
+                if (indice >= 1) {
+                    sql = sql + " AND prezzo >= 25.00 AND prezzo <= 50.00";
+                } else {
+                    sql = sql + " WHERE prezzo >= 25.00 AND prezzo <= 50.00";
+                }
+                indice++;
+            } else if (prezzo.equals("4")) {
+                if (indice >= 1) {
+                    sql = sql + " AND prezzo >= 50.00";
+                } else {
+                    sql = sql + " WHERE  prezzo >= 50.00";
+                }
+                indice++;
+            }
         }
-        if (condizione != null && !condizione.isEmpty()) {
+        if (condizione != null && !condizione.isEmpty())
+
+        {
             if (indice >= 1) {
                 sql = sql + " AND condizione = " + "'" + condizione + "'";
             } else {
@@ -144,7 +170,8 @@ public class ProdottoDAO {
             }
         }
         System.out.println(sql);
-        try (Statement stmt = conn.createStatement();) {
+        try (
+                Statement stmt = conn.createStatement();) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
 

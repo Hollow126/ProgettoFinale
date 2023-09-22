@@ -57,9 +57,10 @@
                         <label for="Prezzo">Prezzo:</label>
                         <select name="Prezzo" id="Prezzo">
                             <option value="">qualsiasi</option>
-                            <option value="9.99">9.99</option>
-                            <option value="19.99">19.99</option>
-                            <option value="29.99">29.99</option>
+                            <option value="1">0$-10$</option>
+                            <option value="2">10-25</option>
+                            <option value="3">25-50</option>
+                            <option value="4">50+</option>
 
                         </select>
                         <br><br>
@@ -181,16 +182,19 @@
                     </div>
                     <div class="d-flex justify-content-center mb-5">
                         <div>
-                            <a href="prodotti?azione=esporta_csv" style="text-decoration: none;">
-                                <button
-                                    class=" mx-auto bg-success text-light mb-1 rounded-4 btn btn-lg me-3 border-black"
-                                    id="exportButton">Esporta in CSV</button>
-                            </a>
+
                         </div>
                         <div>
                             <button data-bs-toggle="collapse" data-bs-target="#demo"
                                 class=" mx-auto bg-white text-primary mb-1 rounded-4 btn btn-lg ms-3 border-primary"
                                 style="background-color: #046db5;">Inserisci prodotto</button>
+
+
+                            <a href="prodotti?azione=esporta_csv" style="text-decoration: none;">
+                                <button
+                                    class=" mx-auto bg-success text-light mb-1 rounded-4 btn btn-lg me-3 border-black"
+                                    id="exportButton">Esporta in CSV</button>
+                            </a>
                         </div>
                     </div>
                     <!--  quando metto encytype e carico una immagine da frontEnd, tutti i valori da frontEnd diventano null  -->
@@ -248,10 +252,10 @@
                             <div class="text-center">
                                 <p class="fw-bold" class="text-center">Immagine</p>
                                 <div class="d-bock mx-auto">
-                                 <input type="file" name="fileUpload" id="fileUpload"  >
-                              </div>
-                          </div>
-                          <br><br>
+                                    <input type="file" name="fileUpload" id="fileUpload">
+                                </div>
+                            </div>
+                            <br><br>
                             <input type="submit" value="Salva" class="d-block mx-auto mb-5">
                         </form>
                     </div>
