@@ -104,15 +104,10 @@ img {
 
 /* Media query per schermi small */
 @media screen and (max-width: 768px) {
-    .card-img-top {
+    img {
         max-width: 75%;
         /* Le immagini continuano a non superare la larghezza del loro contenitore */
         height: auto;
         /* Altezza automatica per mantenere le proporzioni originali */
     }
- 
-    /* img #carta{
-        max-width: 100%;
-    } */
-
 }

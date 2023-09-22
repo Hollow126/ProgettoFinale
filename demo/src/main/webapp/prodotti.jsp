@@ -158,9 +158,19 @@
                                             <div class="col"> ${prodotto.condizione} </div>
                                             <div class="col"> ${prodotto.gradazione} </div>
                                             <div class="col"> ${prodotto.lingua} </div>
-                                            <div class="col">${prodotto.scambiabile ? "Carta scambiabile" : "Carta non scambiabile"}</div>
-                                            <a href="${urlGenerato}">Vai alla pagina</a>
-                                            <a href="prodotti?azione=elimina&id=${prodotto.id}">Elimina</a>
+                                            <div class="col">${prodotto.scambiabile ? "Carta scambiabile" : "Carta non
+                                                scambiabile"}</div>
+                                            <div class="d-flex">
+                                                <button class="flex-grow-1 border-0 border-end"
+                                                    style="background-color: #046db5;"><a href="${urlGenerato}"
+                                                        class="text-light" style="text-decoration: none;">Vai alla
+                                                        pagina</a></button>
+                                                <button class="flex-grow-1 border-0"
+                                                    style="background-color: #046db5;"><a
+                                                        href="prodotti?azione=elimina&id=${prodotto.id}"
+                                                        class="text-light"
+                                                        style="text-decoration: none;">Elimina</a></button>
+                                            </div>
                                         </div>
                                         </p>
                                     </div>
@@ -169,34 +179,82 @@
 
                         </c:forEach>
                     </div>
-
+                    <div class="d-flex justify-content-center mb-5">
+                        <div>
+                            <a href="prodotti?azione=esporta_csv" style="text-decoration: none;">
+                                <button
+                                    class=" mx-auto bg-success text-light mb-1 rounded-4 btn btn-lg me-3 border-black"
+                                    id="exportButton">Esporta in CSV</button>
+                            </a>
+                        </div>
+                        <div>
+                            <button data-bs-toggle="collapse" data-bs-target="#demo"
+                                class=" mx-auto bg-white text-primary mb-1 rounded-4 btn btn-lg ms-3 border-primary"
+                                style="background-color: #046db5;">Inserisci prodotto</button>
+                        </div>
+                    </div>
                     <!--  quando metto encytype e carico una immagine da frontEnd, tutti i valori da frontEnd diventano null  -->
-                    <form action="/prodotti" method="post" enctype="multipart/form-data" >
-                        <input type="hidden" name="id" value=""  >>
-                        Nome: <input type="text" name="NomeDaInserire" id="NomeDaInserire" value="Prova"><br>
-                        Rarita: <input type="text" name="RaritaDaInserire" id="RaritaDaInserire" value="rara"><br>
-                        Prezzo: <input type="text" name="PrezzoDaInserire" id="PrezzoDaInserire" value="5"><br>
-                        Condizione: <input type="text" name="CondizioneDaInserire" id="CondizioneDaInserire"
-                            value="good"><br>
-                        Gradazione: <input type="text" name="GradazioneDaInserire" id="GradazioneDaInserire"
-                            value="8"><br>
-                        Lingua:
-                        <select name="LinguaDaInserire" id="LinguaDaInserire">
-                            <option value="ITA">qualsiasi</option>
-                            <option value="ITA">ITA</option>
-                            <option value="ENG">ENG</option>
-                            <option value="ESP">ESP</option>
-                            <option value="JPN">JPN</option>
-                            <option value="GER">GER</option>
-                        </select>
-                        La carta è Scambiabile? 
-                        <select name="scambiabileDaInserire" id="scambiabileDaInserire">
-                            <option value="true">si</option>
-                            <option value="false">no</option>
-                        </select>
-                        Immagine <input type="file" name="fileUpload" id="fileUpload" >
-                        <input type="submit" value="Salva">
-                    </form>
+                    <div id="demo" class="collapse">
+                        <form action="/prodotti" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="">>
+                            <label for="NomeDaInserire">Nome Carta</label>
+                            <input type="text" name="NomeDaInserire" id="NomeDaInserire" value="Prova"
+                                class="form-control">
+                            <br>
+                            <label for="RaritaDaInserire">Rarita Carta</label>
+                            <select name="RaritaDaInserire" id="RaritaDaInserire">
+                                <option value="Comune">Comune</option>
+                                <option value="Rara">Rara</option>
+                                <option value="Leggendaria">Leggendaria</option>
+                                <option value="Rara Segreta">Rara Segreta</option>
+                            </select>
+                            <br>
+                            <label for="PrezzoDaInserire">Prezzo carta</label>
+                            <input type="text" name="PrezzoDaInserire" id="PrezzoDaInserire" value="5"
+                                class="form-control"><br>
+                            <label for="CondizioneDaInserire">Condizione Carta</label>
+                            <select name="CondizioneDaInserire" id="CondizioneDaInserire">
+                                <option value="Good">Good</option>
+                                <option value="Played">Played</option>
+                                <option value="Near Mint">Near Mint</option>
+                                <option value="Mint">Mint</option>
+                            </select>
+                            <br>
+                            <label for="GradazioneDaInserire">Gradazione Carta</label>
+                            <select name="GradazioneDaInserire" id="GradazioneDaInserire">
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                            </select>
+                            <br>
+                            <label for="LinguaDaInserire"> Lingua Carta</label>
+                            <select name="LinguaDaInserire" id="LinguaDaInserire">
+                                <option value="ITA">ITA</option>
+                                <option value="ENG">ENG</option>
+                                <option value="ESP">ESP</option>
+                                <option value="JPN">JPN</option>
+                                <option value="GER">GER</option>
+                            </select>
+                            <label for="scambiabileDaInserire">La carta è Scambiabile?</label>
+                            <select name="scambiabileDaInserire" id="scambiabileDaInserire">
+                                <option value="true">si</option>
+                                <option value="false">no</option>
+                            </select>
+                            <br>
+                            <div class="text-center">
+                                <p class="fw-bold" class="text-center">Immagine</p>
+                                <div class="d-bock mx-auto">
+                                 <input type="file" name="fileUpload" id="fileUpload"  >
+                              </div>
+                          </div>
+                          <br><br>
+                            <input type="submit" value="Salva" class="d-block mx-auto mb-5">
+                        </form>
+                    </div>
                     <jsp:include page="footer.jsp" />
             </body>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

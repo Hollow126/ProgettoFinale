@@ -70,8 +70,8 @@
             <div id="demo" class="collapse">
               <form action="DettaglioProdotto" method="post">
                 <input type="hidden" name="id" value="${prodotto.id}" class="nome123">
-                Nome: <input type="text" name="Nome" value="${prodotto.nome}"><br>
-
+                <label for="Nome">Nome</label>
+                <input type="text" name="Nome" value="${prodotto.nome}" class="form-control">
                 <label for="Rarità">Rarità:</label>
                 <select name="Rarità" id="Rarità">
                   <option value="${prodotto.rarita}">${prodotto.rarita}</option>
@@ -98,7 +98,7 @@
                   <option value="Near Mint">Near Mint</option>
                   <option value="Mint">Mint</option>
                 </select>
-                <br><br>
+                <br>
 
 
                 <label for="Gradazione">Gradazione:</label>

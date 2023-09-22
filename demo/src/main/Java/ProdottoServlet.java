@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.io.File;
+import java.io.PrintWriter;
 
 public class ProdottoServlet extends HttpServlet {
     private ProdottoDAO prodottoDAO;
@@ -28,16 +29,121 @@ public class ProdottoServlet extends HttpServlet {
         prodottoDAO = new ProdottoDAO(conn);
     }
 
+    // @Override
+    // protected void doGet(HttpServletRequest request, HttpServletResponse
+    // response)
+    // throws ServletException, IOException {
+
+    // List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
+    // request.setAttribute("prodotti", prodotti);
+    // // Gestisci i filtri se sono stati applicati
+
+    // // ottiene i dati dei parametri dei filtri
+    // List<Prodotto> prodotti2 = prodottoDAO.getAllProdotti();
+    // String idDaFrontEnd = request.getParameter("id");
+    // String azioneDaFrontEnd = request.getParameter("azione");
+    // String raritaDaFrontEnd = request.getParameter("Rarità");
+    // String prezzoDaFrontEnd = request.getParameter("Prezzo");
+    // String condizioneDaFrontEnd = request.getParameter("Condizione");
+    // String gradazioneDaFrontEnd = request.getParameter("Gradazione");
+    // String linguaDaFrontEnd = request.getParameter("Lingua");
+    // String ordineDaFrontEnd = request.getParameter("OrdinePrezzo");
+
+    // List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2,
+    // raritaDaFrontEnd, prezzoDaFrontEnd,
+    // condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd,
+    // ordineDaFrontEnd);
+
+    // if ("elimina".equals(azioneDaFrontEnd) && idDaFrontEnd != null) {
+    // prodottoDAO.eliminaProdotto(Integer.parseInt(idDaFrontEnd));
+    // } else if ("esporta_csv".equals(azioneDaFrontEnd)) {
+    // response.setContentType("text/csv");
+    // response.setHeader("Content-Disposition",
+    // "attachment;filename=prodotti.csv");
+
+    // try (PrintWriter writer = response.getWriter()) {
+    // writer.println("Titolo,Prezzo,Scambiabile,
+    // Rarità,Condizione,Gradazione,Lingua");
+    // for (Prodotto prodotto : prodottoDAO.getProdottiByFilter(prodotti2,
+    // raritaDaFrontEnd, prezzoDaFrontEnd,
+    // condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd,
+    // ordineDaFrontEnd)) {
+    // writer.println(prodotto.getNome() + "," + prodotto.getPrezzo() + ","+
+    // prodotto.isScambiabile() + "," + prodotto.getRarita() + ","
+    // + prodotto.getCondizione() + "," + prodotto.getGradazione() + "," +
+    // prodotto.getLingua());
+    // }
+    // } catch (Exception e) {
+    // System.out.println(e.getMessage());
+    // }
+    // }
+
+    // request.setAttribute("prodotti", prodottiFiltrati);
+    // RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
+    // dispatcher.forward(request, response);
+    // }
+
+    // @Override
+    // protected void doGet(HttpServletRequest request, HttpServletResponse
+    // response)
+    // throws ServletException, IOException {
+
+    // List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
+
+    // // Gestisci i filtri se sono stati applicati
+    // String idDaFrontEnd = request.getParameter("id");
+    // String azioneDaFrontEnd = request.getParameter("azione");
+    // String raritaDaFrontEnd = request.getParameter("Rarità");
+    // String prezzoDaFrontEnd = request.getParameter("Prezzo");
+    // String condizioneDaFrontEnd = request.getParameter("Condizione");
+    // String gradazioneDaFrontEnd = request.getParameter("Gradazione");
+    // String linguaDaFrontEnd = request.getParameter("Lingua");
+    // String ordineDaFrontEnd = request.getParameter("OrdinePrezzo");
+
+    // List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti,
+    // raritaDaFrontEnd, prezzoDaFrontEnd,
+    // condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd,
+    // ordineDaFrontEnd);
+
+    // // ottiene i dati dei parametri dei filtri
+
+    // if ("elimina".equals(azioneDaFrontEnd) && idDaFrontEnd != null) {
+    // prodottoDAO.eliminaProdotto(Integer.parseInt(idDaFrontEnd));
+    // // Puoi aggiungere qui una reindirizzazione a una pagina di conferma
+    // } else if ("esporta_csv".equals(azioneDaFrontEnd)) {
+    // response.setContentType("text/csv");
+    // response.setHeader("Content-Disposition",
+    // "attachment;filename=prodotti.csv");
+
+    // try (PrintWriter writer = response.getWriter()) {
+    // writer.println("Titolo,Prezzo,Scambiabile,
+    // Rarità,Condizione,Gradazione,Lingua");
+    // for (Prodotto prodotto : prodottoDAO.getProdottiByFilter(prodotti,
+    // raritaDaFrontEnd, prezzoDaFrontEnd,
+    // condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd,
+    // ordineDaFrontEnd)) {
+    // writer.println(prodotto.getNome() + "," + prodotto.getPrezzo() + "," +
+    // prodotto.isScambiabile()
+    // + "," + prodotto.getRarita() + ","
+    // + prodotto.getCondizione() + "," + prodotto.getGradazione() + "," +
+    // prodotto.getLingua());
+    // }
+    // } catch (Exception e) {
+    // System.out.println(e.getMessage());
+    // }
+    // }
+    // request.setAttribute("prodotti", prodottiFiltrati);
+    // RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
+    // dispatcher.forward(request, response);
+    // }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
-        request.setAttribute("prodotti", prodotti);
-        // Gestisci i filtri se sono stati applicati
-        
-        // ottiene i dati dei parametri dei filtri
-        List<Prodotto> prodotti2 = prodottoDAO.getAllProdotti();
+
+        // Ottieni i parametri dei filtri dall'URL
         String idDaFrontEnd = request.getParameter("id");
         String azioneDaFrontEnd = request.getParameter("azione");
         String raritaDaFrontEnd = request.getParameter("Rarità");
@@ -49,12 +155,52 @@ public class ProdottoServlet extends HttpServlet {
 
         if ("elimina".equals(azioneDaFrontEnd) && idDaFrontEnd != null) {
             prodottoDAO.eliminaProdotto(Integer.parseInt(idDaFrontEnd));
+        } else if ("esporta_csv".equals(azioneDaFrontEnd)) {
+
+            raritaDaFrontEnd = request.getParameter("Rarità");
+            prezzoDaFrontEnd = request.getParameter("Prezzo");
+            condizioneDaFrontEnd = request.getParameter("Condizione");
+            gradazioneDaFrontEnd = request.getParameter("Gradazione");
+            linguaDaFrontEnd = request.getParameter("Lingua");
+            ordineDaFrontEnd = request.getParameter("OrdinePrezzo");
+            System.out.println("la rarita dentro esporta da csv è " + raritaDaFrontEnd);
+
+            List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti, raritaDaFrontEnd,
+                    prezzoDaFrontEnd,
+                    condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd, ordineDaFrontEnd);
+
+            // Imposta gli header per il file CSV
+            response.setContentType("text/csv");
+            response.setHeader("Content-Disposition", "attachment;filename=prodotti.csv");
+
+            try (PrintWriter writer = response.getWriter()) {
+                writer.println("Titolo,Prezzo,Scambiabile, Rarità,Condizione,Gradazione,Lingua");
+                for (Prodotto prodotto : prodottiFiltrati) {
+                    System.out.println(prodotto.getNome());
+                }
+                for (Prodotto prodotto : prodottiFiltrati) {
+                    writer.println(
+                            prodotto.getNome() + "," + prodotto.getPrezzo() + "," + prodotto.isScambiabile() + ","
+                                    + prodotto.getRarita() + "," + prodotto.getCondizione() + ","
+                                    + prodotto.getGradazione() + "," + prodotto.getLingua());
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            return; // Esce dal metodo dopo l'esportazione del CSV, senza inoltrare la richiesta al
+                    // JSP
         }
 
-        List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti2, raritaDaFrontEnd, prezzoDaFrontEnd,
+        // Altrimenti, se non è un'azione di esportazione, continua con la gestione dei
+        // filtri e inoltra la richiesta al JSP
+
+        List<Prodotto> prodottiFiltrati = prodottoDAO.getProdottiByFilter(prodotti, raritaDaFrontEnd, prezzoDaFrontEnd,
                 condizioneDaFrontEnd, gradazioneDaFrontEnd, linguaDaFrontEnd, ordineDaFrontEnd);
         request.setAttribute("prodotti", prodottiFiltrati);
 
+        // Il resto del tuo codice per la gestione dei filtri e l'inoltro al JSP
+        // ...
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);
     }
