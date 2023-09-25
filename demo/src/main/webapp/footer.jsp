@@ -14,22 +14,19 @@
   
       <!-- Right -->
       <div>
-        <a href="" class="me-4 ">
+        <a href="https://www.facebook.com/FireFormazione/?locale=it_IT" class="me-4 ">
             <img rel="icon" src="img/icons8-facebook-64.png" />
         </a>
-        <a href="" class="me-4 ">
-            <img rel="icon" src="img/icons8-twitter-circled-64.png" />
-        </a>
-        <a href="" class="me-4 ">
+        <a href="https://entefire.it/fire/" class="me-4 ">
             <img rel="icon" src="img/icons8-google-64.png" />
         </a>
-        <a href="" class="me-4 ">
+        <a href="https://www.instagram.com/f.ire_formazione/" class="me-4 ">
             <img rel="icon" src="img/icons8-instagram-64.png" />
         </a>
-        <a href="" class="me-4 ">
+        <a href="https://it.linkedin.com/company/fire-formazione?trk=public_post_feed-actor-name" class="me-4 ">
             <img rel="icon" src="img/icons8-linkedin-64.png" />
         </a>
-        <a href="" class="me-4 ">
+        <a href="https://github.com/delectablerec/java-fullstack" class="me-4 ">
             <img rel="icon" src="img/icons8-github-64.png" />
         </a>
       </div>
@@ -37,7 +34,7 @@
       <!-- Right -->
     </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        © 2023 Copyright:
+        <a class="text-dark" href="https://entefire.it/fire/">Entefire.com</a>
       </div>
 </footer>

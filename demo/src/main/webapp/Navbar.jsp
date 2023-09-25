@@ -8,7 +8,7 @@
         <!-- place navbar here -->
         <nav class="navbar navbar-expand-sm bg-light text-bg-light d-flex flex-sm-column">
           <div class="container-fluid">
-            <a class="navbar-brand " href="javascript:void(0)"><img src="img/prova-logo.png" id="logo"></a>
+            <a class="navbar-brand " href="prodotti"> <img src="img/prova-logo.png" id="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
               <span class="navbar-toggler-icon"></span>
             </button>

@@ -31,7 +31,7 @@
           <div class="col">
             <section class="category">
 
-              <img src="${prodotto.immagine}" class="category_item" alt="" />
+              <img src="${prodotto.immagine}" class="category_item" alt="" style="position: relative;margin-left: 5px;"/>
             </section>
           </div>
           <div class="col mt-4">
@@ -58,6 +58,10 @@
                   <td>${prodotto.condizione}</td>
                 </tr>
                 <tr>
+                  <td>Gradazione:</td>
+                  <td>${prodotto.gradazione}</td>
+                </tr>
+                <tr>
                   <td>Scambiabile:</td>
                   <td>${prodotto.scambiabile ? "si" : "no"}</td>
                 </tr>
@@ -78,17 +82,10 @@
                   <option value="Comune">Comune</option>
                   <option value="Rara">Rara</option>
                   <option value="Leggendaria">Leggendaria</option>
+                  <option value="Rara Segreta">Rara Segreta</option>
                 </select>
-
-                <label for="Prezzo">Prezzo:</label>
-                <select name="Prezzo" id="Prezzo">
-                  <option value="${prodotto.prezzo}">${prodotto.prezzo}</option>
-                  <option value="9.99">9.99</option>
-                  <option value="19.99">19.99</option>
-                  <option value="29.99">29.99</option>
-
-                </select>
-
+                <label for="Prezzo">Prezzo</label>
+                <input type="number"  min="0" onkeyup="if(this.value<0){this.value= this.value * -1}" name="Prezzo" value="${prodotto.prezzo}" class="form-control">
 
                 <label for="Condizione">Condizione:</label>
                 <select name="Condizione" id="Condizione">

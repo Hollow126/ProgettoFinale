@@ -48,6 +48,7 @@
                                 <option value="Comune">Comune</option>
                                 <option value="Rara">Rara</option>
                                 <option value="Leggendaria">Leggendaria</option>
+                                <option value="Rara Segreta">Rara Segreta</option>
                             </select>
                             <br><br>
 
@@ -134,8 +135,7 @@
 
                     </div>
                     </form>
-
-                    <h1 class="text-center " style="color: #046db5;">Lista dei prodotti</h1>
+                    <h1 class="text-center my-5" style="color: #046db5;">Lista dei prodotti</h1>
                     <div class="row">
 
 
@@ -154,19 +154,19 @@
                                         <h4 class="card-title">${prodotto.nome}</h4>
                                         <p class="card-text">
                                         <div class="row">
-                                            <div class="col">${prodotto.prezzo}</div>
+                                            <div class="col">${prodotto.prezzo}$</div>
                                             <div class="col">${prodotto.rarita}</div>
-                                            <div class="col"> ${prodotto.condizione} </div>
-                                            <div class="col"> ${prodotto.gradazione} </div>
+                                            <!-- <div class="col"> ${prodotto.condizione} </div>
+                                            <div class="col"> ${prodotto.gradazione} </div> -->
                                             <div class="col"> ${prodotto.lingua} </div>
-                                            <div class="col">${prodotto.scambiabile ? "Carta scambiabile" : "Carta non
-                                                scambiabile"}</div>
+                                            <!-- <div class="col">${prodotto.scambiabile ? "Carta scambiabile" : "Carta non
+                                                scambiabile"}</div> -->
                                             <div class="d-flex">
-                                                <button class="flex-grow-1 border-0 border-end"
+                                                <button class="flex-grow-1 border-0 border-end rounded-4  "
                                                     style="background-color: #046db5;"><a href="${urlGenerato}"
                                                         class="text-light" style="text-decoration: none;">Vai alla
                                                         pagina</a></button>
-                                                <button class="flex-grow-1 border-0"
+                                                <button class="flex-grow-1 border-0 rounded-4"
                                                     style="background-color: #046db5;"><a
                                                         href="prodotti?azione=elimina&id=${prodotto.id}"
                                                         class="text-light"
@@ -200,7 +200,7 @@
                     <!--  quando metto encytype e carico una immagine da frontEnd, tutti i valori da frontEnd diventano null  -->
                     <div id="demo" class="collapse">
                         <form action="/prodotti" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id" value="">>
+                            <input type="hidden" name="id" value="">
                             <label for="NomeDaInserire">Nome Carta</label>
                             <input type="text" name="NomeDaInserire" id="NomeDaInserire" value="Prova"
                                 class="form-control">
@@ -213,9 +213,12 @@
                                 <option value="Rara Segreta">Rara Segreta</option>
                             </select>
                             <br>
+
+
                             <label for="PrezzoDaInserire">Prezzo carta</label>
-                            <input type="text" name="PrezzoDaInserire" id="PrezzoDaInserire" value="5"
-                                class="form-control"><br>
+                            <input type="number" min="0" onkeyup="if(this.value<0){this.value= this.value * -1}"
+                                name="PrezzoDaInserire" id="PrezzoDaInserire" value="5" class="form-control"><br>
+
                             <label for="CondizioneDaInserire">Condizione Carta</label>
                             <select name="CondizioneDaInserire" id="CondizioneDaInserire">
                                 <option value="Good">Good</option>
