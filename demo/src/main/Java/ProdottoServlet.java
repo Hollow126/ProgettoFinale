@@ -204,7 +204,7 @@ public class ProdottoServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("prodotti.jsp");
         dispatcher.forward(request, response);
     }
-
+// commento 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
